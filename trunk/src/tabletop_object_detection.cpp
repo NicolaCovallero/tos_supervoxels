@@ -200,35 +200,21 @@ void TableTop_Object_Detection::segment()
   //float t_ini = cv::getTickCount();
 
   pcl::PointIndices::Ptr obj_idx (new pcl::PointIndices());
-  detectObjectsOnTable(cloud, zmin, this->zmax , obj_idx, true);
+  detectObjectsOnTable(this->cloud, this->zmin, this->zmax , obj_idx, true);
   //float elapsed_time_plane = (cv::getTickCount()-t_ini)/cv::getTickFrequency();
 
-  //-------------------- parameters ----------
-  //Super Voxel Algorithm's parameters
-  bool disable_transform = this->disable_transform;
-  float voxel_resolution = (float)this->voxel_resolution; //0.0075f
-  float seed_resolution = (float)this->seed_resolution; //0.03f;
-  float color_importance = (float)this->color_importance;
-  float spatial_importance = (float)this->spatial_importance;
-  float normal_importance = (float)this->normal_importance;
+  if(this->seed_resolution < 0.013)
+    pcl::console::print_warn("[TableTop_Object_Detection] seed resolution very low, the segmentation could be fragmented.");
 
-  // LCCPSegmentation parameters
-  float concavity_tolerance_threshold = (float)this->concavity_tolerance_threshold;
-  float smoothness_threshold = (float)this->smoothness_threshold;
-  uint32_t min_segment_size = (uint32_t)this->min_segment_size;
-  bool use_extended_convexity = this->use_extended_convexity;
-  bool use_sanity_criterion = this->use_sanity_criterion;
-  //-------------------------------------------
+  pcl::SupervoxelClustering<pcl::PointXYZRGBA> super (this->voxel_resolution, this->seed_resolution);
 
-  pcl::SupervoxelClustering<pcl::PointXYZRGBA> super (voxel_resolution, seed_resolution);
-
-  super.setInputCloud (cloud);
+  super.setInputCloud (this->cloud);
 
   //super.setNormalCloud (input_normals);
 
-  super.setColorImportance (color_importance);
-  super.setSpatialImportance (spatial_importance);
-  super.setNormalImportance (normal_importance);
+  super.setColorImportance (this->color_importance);
+  super.setSpatialImportance (this->spatial_importance);
+  super.setNormalImportance (this->normal_importance);
  
   super.extract (supervoxel_clusters);
   labeled_voxel_cloud = super.getLabeledVoxelCloud ();
@@ -250,8 +236,6 @@ void TableTop_Object_Detection::segment()
   typedef boost::adjacency_list<boost::setS, boost::setS, boost::undirectedS, uint32_t, float> VoxelAdjacencyList;
   VoxelAdjacencyList supervoxel_adjacency_list;
   super.getSupervoxelAdjacencyList (supervoxel_adjacency_list);
-
-  float normals_scale = seed_resolution / 2.0;
   
   // Segmentation Stuff
   
@@ -260,12 +244,12 @@ void TableTop_Object_Detection::segment()
     k_factor = 1;
 
   pcl::LCCPSegmentation<pcl::PointXYZRGBA> lccp;
-  lccp.setConcavityToleranceThreshold (concavity_tolerance_threshold);
-  lccp.setSanityCheck (use_sanity_criterion);
-  lccp.setSmoothnessCheck (true, voxel_resolution, seed_resolution, smoothness_threshold);
+  lccp.setConcavityToleranceThreshold (this->concavity_tolerance_threshold);
+  lccp.setSanityCheck (this->use_sanity_criterion);
+  lccp.setSmoothnessCheck (true, this->voxel_resolution, this->seed_resolution, this->smoothness_threshold);
   lccp.setKFactor (k_factor);
-  lccp.setInputSupervoxels (supervoxel_clusters, supervoxel_adjacency);
-  lccp.setMinSegmentSize (min_segment_size);
+  lccp.setInputSupervoxels (this->supervoxel_clusters, this->supervoxel_adjacency);
+  lccp.setMinSegmentSize (this->min_segment_size);
   lccp.segment ();
 
   pcl::PointCloud<pcl::PointXYZL>::Ptr sv_labeled_cloud = super.getLabeledCloud ();

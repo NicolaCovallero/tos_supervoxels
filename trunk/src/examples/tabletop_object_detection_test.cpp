@@ -25,6 +25,7 @@ To segment changing some parameters
 #include "tabletop_object_detection.h"
 
 #include <pcl/visualization/pcl_visualizer.h>
+#include <pcl/console/parse.h>
 
 // these includes are for retrieve the objects' points in the RGB image
 #include "opencv2/imgproc/imgproc.hpp"
