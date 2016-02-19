@@ -114,7 +114,7 @@ class TableTop_Object_Detection
     static const int TH_POINTS = 400; /**< Default value of the threshold of minimum points required to consider a cluster as valid */
     //-------------------
 
-    std::vector<Object> filt_objs;
+    std::vector<Object> detected_objects;
     pcl::PointCloud<pcl::PointXYZRGBA>::Ptr cloud;
     pcl::PointCloud<pcl::PointXYZL>::Ptr lccp_labeled_cloud;
     std::multimap<uint32_t, uint32_t> supervoxel_adjacency;
@@ -197,6 +197,11 @@ class TableTop_Object_Detection
     */
     void init(pcl::PointCloud<pcl::PointXYZRGBA> input_cloud);
 
+    /*! \brief reset all the publis members 
+    * reset all the public members.
+    */
+    void reset();
+
     /*! \brief get the default parameters of the algorithm
     */  
     tableTop_object_detection_parameters get_default_parameters(); 
@@ -243,6 +248,10 @@ class TableTop_Object_Detection
     /*! \brief Print the parameters of the algorithm in the shell
     */
     void print_parameters();
+
+    /*! \brief returns input cloud
+    */
+    pcl::PointCloud<pcl::PointXYZRGBA>::Ptr get_input_cloud();
 
     /*! \brief returns labeld voxel cloud
     */

@@ -14,7 +14,7 @@ void TableTop_Object_Detection::init(pcl::PointCloud<pcl::PointXYZRGBA> input_cl
               tableTop_object_detection_parameters &opt)
 {
   this->cloud = input_cloud.makeShared();
-  this->filt_objs.resize(0);
+  this->detected_objects.resize(0);
   set_parameters(opt);
   this->initialized = true;
 } 
@@ -22,10 +22,22 @@ void TableTop_Object_Detection::init(pcl::PointCloud<pcl::PointXYZRGBA> input_cl
 void TableTop_Object_Detection::init(pcl::PointCloud<pcl::PointXYZRGBA> input_cloud)
 {
   this->cloud = input_cloud.makeShared();
-  this->filt_objs.resize(0);
+  this->detected_objects.resize(0);
   set_default_parameters();
   this->initialized = true;
 } 
+
+void TableTop_Object_Detection::reset()
+{
+  this->cloud->points.resize(0);
+  this->detected_objects.resize(0);
+  this->lccp_labeled_cloud->points.resize(0);
+  this->labeled_voxel_cloud->points.resize(0);
+  this->sv_normal_cloud->points.resize(0);
+  this->supervoxel_clusters.clear();
+  this->supervoxel_adjacency.clear();
+  set_default_parameters();
+}
 
 void TableTop_Object_Detection::set_parameters(tableTop_object_detection_parameters & opt)
 {
@@ -277,26 +289,26 @@ void TableTop_Object_Detection::segment()
 
     //in this way we enlarges the vector everytime we encounter a greater label. So we don't need to pass all 
     // labeeld point cloud to see what is the greater label, and then to resize the vector. 
-    if(idx >= filt_objs.size()) // keep in mind that there is also the label 0! 
-      filt_objs.resize(idx+1);
+    if(idx >= detected_objects.size()) // keep in mind that there is also the label 0! 
+      detected_objects.resize(idx+1);
         
     pcl::PointXYZRGBA tmp_point_rgb;
     tmp_point_rgb = cloud->points.at(i);
-    filt_objs[idx].object_cloud.points.push_back(tmp_point_rgb);
+    detected_objects[idx].object_cloud.points.push_back(tmp_point_rgb);
 
-    filt_objs[idx].label = (int)idx;
+    detected_objects[idx].label = (int)idx;
   } 
 
   //remove segments with too few points
   // it will removes te ones with few points or the ones with no points (these are created because of the labels of lccp)
-  int size = filt_objs.size();
+  int size = detected_objects.size();
   int i = 0;
   while (i < size)
   {
-    if(filt_objs[i].object_cloud.size() < this->th_points)
+    if(detected_objects[i].object_cloud.size() < this->th_points)
     {
-      filt_objs.erase(filt_objs.begin() + i);
-      size = filt_objs.size();
+      detected_objects.erase(detected_objects.begin() + i);
+      size = detected_objects.size();
     }
     else
       i++;
@@ -314,7 +326,7 @@ void TableTop_Object_Detection::show_super_voxels(boost::shared_ptr<pcl::visuali
                        bool show_adjacency_map,
                        bool show_super_voxel_normals)
 {
-  if(this->filt_objs.size() > 0)
+  if(this->detected_objects.size() > 0)
   {
     viewer->addPointCloud (this->labeled_voxel_cloud, "supervoxel_cloud");
 
@@ -358,7 +370,7 @@ void TableTop_Object_Detection::show_super_voxels(boost::shared_ptr<pcl::visuali
 
 void TableTop_Object_Detection::show_super_voxels(boost::shared_ptr<pcl::visualization::PCLVisualizer> & viewer)
 {
-  if(this->filt_objs.size() > 0)
+  if(this->detected_objects.size() > 0)
   {
     viewer->addPointCloud (this->labeled_voxel_cloud, "supervoxel_cloud");  
     viewer->addPointCloudNormals<pcl::PointNormal> (this->sv_normal_cloud,1,0.05f, "supervoxel_normals");
@@ -397,17 +409,17 @@ void TableTop_Object_Detection::show_segmented_objects(boost::shared_ptr<pcl::vi
 {
   pcl::PointCloud<pcl::PointXYZL> objects_cloud;
 
-  for (int i = 0; i < this->filt_objs.size(); ++i)
+  for (int i = 0; i < this->detected_objects.size(); ++i)
   {
     pcl::PointCloud<pcl::PointXYZL> tmp_cloud;
 
-    for (int p = 0; p < this->filt_objs[i].object_cloud.size(); ++p)
+    for (int p = 0; p < this->detected_objects[i].object_cloud.size(); ++p)
     {
       pcl::PointXYZL tmp_point;
-      tmp_point.x = this->filt_objs[i].object_cloud[p].x;
-      tmp_point.y = this->filt_objs[i].object_cloud[p].y;
-      tmp_point.z = this->filt_objs[i].object_cloud[p].z;
-      tmp_point.label = this->filt_objs[i].label;
+      tmp_point.x = this->detected_objects[i].object_cloud[p].x;
+      tmp_point.y = this->detected_objects[i].object_cloud[p].y;
+      tmp_point.z = this->detected_objects[i].object_cloud[p].z;
+      tmp_point.label = this->detected_objects[i].label;
       tmp_cloud.points.push_back(tmp_point);
     }
     
@@ -440,16 +452,16 @@ void TableTop_Object_Detection::clean_viewer(boost::shared_ptr<pcl::visualizatio
 
 std::vector<Object> TableTop_Object_Detection::get_segmented_objects()
 {
-  return this->filt_objs;
+  return this->detected_objects;
 }
 
 std::vector<pcl::PointCloud<pcl::PointXYZRGBA> > TableTop_Object_Detection::get_segmented_objects_simple()
 {
   std::vector<pcl::PointCloud<pcl::PointXYZRGBA> > obj_vec;
   
-  for (int i = 0; i < this->filt_objs.size(); ++i)
+  for (int i = 0; i < this->detected_objects.size(); ++i)
   {
-    obj_vec.push_back(filt_objs[i].object_cloud);
+    obj_vec.push_back(detected_objects[i].object_cloud);
   }
 
   return obj_vec;
@@ -476,6 +488,11 @@ void TableTop_Object_Detection::print_parameters()
             << "zmax: " << (double)this->zmax << std::endl 
             << "th_points: " << (int)this->th_points << std::endl << std::endl;  
   return;  
+}
+
+pcl::PointCloud<pcl::PointXYZRGBA>::Ptr TableTop_Object_Detection::get_input_cloud()
+{
+  return this->cloud;
 }
 
 pcl::PointCloud<pcl::PointXYZL> TableTop_Object_Detection::get_labeled_voxel_cloud()

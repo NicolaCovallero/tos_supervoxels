@@ -71,8 +71,8 @@ main (int argc, char ** argv)
    }
 
   // parameters for the LCCP segmentation
-  TableTop_Object_Detection segLCCP;
-  tableTop_object_detection_parameters opt = segLCCP.get_default_parameters();
+  TableTop_Object_Detection seg;
+  tableTop_object_detection_parameters opt = seg.get_default_parameters();
 
   // ------------------- parsing the inputs ----------------------------     
   //--------------------------------------------------------------------
@@ -106,10 +106,10 @@ main (int argc, char ** argv)
   //----------------------------------------
   //TableTop_Object_Detection segLCCP;
   std::vector<Object> seg_objs; //("seg_objs" stands for "segmented objects") 
-  segLCCP.init(*cloud,opt);
-  segLCCP.print_parameters();
-  segLCCP.segment();
-  seg_objs = segLCCP.get_segmented_objects();
+  seg.init(*cloud,opt);
+  seg.print_parameters();
+  seg.segment();
+  seg_objs = seg.get_segmented_objects();
   std::cout << "\nDetected " << seg_objs.size() << " objects.\n\n";
   //----------------------------------------
 
@@ -121,19 +121,21 @@ main (int argc, char ** argv)
   // show super voxels with normals and adiacency map 
   bool show_adjacency_map = true;
   bool show_super_voxel_normals = true;
-  segLCCP.show_super_voxels(viewer,show_adjacency_map,show_super_voxel_normals);  
+  seg.show_super_voxels(viewer,show_adjacency_map,show_super_voxel_normals);  
   
   std::cout << "Press 'n' to show the segmented objects\n";
   while (!viewer->wasStopped () && !pressed) // the pressed variable is just usfull only for this first while (bad programming)
       viewer->spinOnce (100);
-  segLCCP.clean_viewer(viewer);
+  seg.clean_viewer(viewer);
 
   // show the segmented objects, the result of the segmentation
   std::cout << "\nClose the visualzier to go to the next step\n";
-  segLCCP.show_segmented_objects(viewer);
+  seg.show_segmented_objects(viewer);
   while (!viewer->wasStopped ()) // the pressed variable is just usfull only for this first while (bad programming)
       viewer->spinOnce (100);
-  segLCCP.clean_viewer(viewer);
+  seg.clean_viewer(viewer);
+
+  seg.reset(); // free memory
 
   if(cloud->isOrganized())//if the point cloud is organized we can work with the RGB image
   {
