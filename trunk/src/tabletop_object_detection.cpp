@@ -2,12 +2,12 @@
 
 TableTop_Object_Detection::TableTop_Object_Detection()
 {
-
+  this->initialized = false;
 }
 
 TableTop_Object_Detection::~TableTop_Object_Detection()
 {
-
+  
 }
 
 void TableTop_Object_Detection::init(pcl::PointCloud<pcl::PointXYZRGBA> input_cloud,
@@ -16,6 +16,7 @@ void TableTop_Object_Detection::init(pcl::PointCloud<pcl::PointXYZRGBA> input_cl
   this->cloud = input_cloud.makeShared();
   this->filt_objs.resize(0);
   set_parameters(opt);
+  this->initialized = true;
 } 
  
 void TableTop_Object_Detection::init(pcl::PointCloud<pcl::PointXYZRGBA> input_cloud)
@@ -23,6 +24,7 @@ void TableTop_Object_Detection::init(pcl::PointCloud<pcl::PointXYZRGBA> input_cl
   this->cloud = input_cloud.makeShared();
   this->filt_objs.resize(0);
   set_default_parameters();
+  this->initialized = true;
 } 
 
 void TableTop_Object_Detection::set_parameters(tableTop_object_detection_parameters & opt)
@@ -198,6 +200,12 @@ TableTop_Object_Detection::get_default_parameters()
 void TableTop_Object_Detection::segment()
 {
   //float t_ini = cv::getTickCount();
+
+  if(!this->initialized)
+  {
+    pcl::console::print_error("[TableTop_Object_Detection] No valid input cloud given to the algorithm. The class has not beed initialized.");
+    return;
+  }
 
   pcl::PointIndices::Ptr obj_idx (new pcl::PointIndices());
   detectObjectsOnTable(this->cloud, this->zmin, this->zmax , obj_idx, true);

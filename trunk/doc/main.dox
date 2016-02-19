@@ -3,8 +3,27 @@
   \section Introduction 
 
   This library detects objects that stand on a table in a given point cloud. 
-  It also include a structure to define all the parameters used by the alrogithm in
-  a compact way. 
+  The algorithm is defined in the class:
+  \code 
+  TableTop_Object_Detection
+  \endcode
+  It also includes a struct to define all the parameters used by the alrogithm in
+  a compact way:
+  \code
+  tableTop_object_detection_parameters
+  \endcode
+  To use it initialize before it with:
+  \code
+  TableTop_Object_Detection segLCCP;
+  tableTop_object_detection_parameters opt = segLCCP.get_default_parameters();
+  \endcode
+  Moreover the struct to manage the segmented objects:
+  \code
+  Object
+  \endcode
+
+
+  \author: Nicola Covallero (nicolacovallero92@gmail.com) 
 
   \subsection Pre-Requisites
 

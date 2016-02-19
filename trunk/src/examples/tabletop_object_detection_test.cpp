@@ -105,7 +105,7 @@ main (int argc, char ** argv)
   }
   //----------------------------------------
   //TableTop_Object_Detection segLCCP;
-  std::vector<Object> seg_objs; //("seg_objs" stands for "filtered objects") 
+  std::vector<Object> seg_objs; //("seg_objs" stands for "segmented objects") 
   segLCCP.init(*cloud,opt);
   segLCCP.print_parameters();
   segLCCP.segment();
@@ -214,9 +214,8 @@ main (int argc, char ** argv)
         }
 
         cv::imshow("Segmented Results", img); //display the image which is stored in the 'img' in the "MyWindow" window
-
+        std::cout << "Object: " << idx_v + 1 << " of " << seg_objs.size() << " objects." << std::endl;
         k = cv::waitKey(0);
-        std::cout << "Object: " << idx_v << std::endl;
       }
 
       if( k == 65363 || k == 0 || k == 1113939) // right arrow

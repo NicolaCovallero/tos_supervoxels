@@ -44,7 +44,10 @@
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">TableTop_Object_Detection Class Reference</div>  </div>
 </div><!--header-->
@@ -203,11 +206,118 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>get_zmax</b> ()</td
 <tr class="memitem:a175bd137364f6bb2f55fbac2a07fd9ba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a175bd137364f6bb2f55fbac2a07fd9ba"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>get_th_points</b> ()</td></tr>
 <tr class="separator:a175bd137364f6bb2f55fbac2a07fd9ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a26381efc3b23b5b2496d08d5db6ed196"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#a26381efc3b23b5b2496d08d5db6ed196">addSupervoxelConnectionsToViewer</a> (pcl::PointXYZRGBA &amp;supervoxel_center, pcl::PointCloud&lt; pcl::PointXYZRGBA &gt; &amp;adjacent_supervoxel_centers, std::string supervoxel_name, boost::shared_ptr&lt; pcl::visualization::PCLVisualizer &gt; &amp;viewer)</td></tr>
+<tr class="memdesc:a26381efc3b23b5b2496d08d5db6ed196"><td class="mdescLeft">&#160;</td><td class="mdescRight">shows supervoxel connections to viewer thorugh poly data shapes  <a href="#a26381efc3b23b5b2496d08d5db6ed196">More...</a><br/></td></tr>
+<tr class="separator:a26381efc3b23b5b2496d08d5db6ed196"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af00bb688ce3a84cb3bd4edc8fe364d4b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#af00bb688ce3a84cb3bd4edc8fe364d4b">detectObjectsOnTable</a> (pcl::PointCloud&lt; pcl::PointXYZRGBA &gt;::Ptr cloud, double <a class="el" href="classTableTop__Object__Detection.html#ab9bbf3c9ac5b0564d3dc45d5a3350fe3">zmin</a>, double <a class="el" href="classTableTop__Object__Detection.html#ac42ea218190506b3d367406088fde651">zmax</a>, pcl::PointIndices::Ptr objectIndices, bool filter_input_cloud)</td></tr>
+<tr class="memdesc:af00bb688ce3a84cb3bd4edc8fe364d4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">detects objects that stands on a table  <a href="#af00bb688ce3a84cb3bd4edc8fe364d4b">More...</a><br/></td></tr>
+<tr class="separator:af00bb688ce3a84cb3bd4edc8fe364d4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab18176bb83e188ae71322dd192703a2e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab18176bb83e188ae71322dd192703a2e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#ab18176bb83e188ae71322dd192703a2e">set_default_parameters</a> ()</td></tr>
+<tr class="memdesc:ab18176bb83e188ae71322dd192703a2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set default parameters to the algorithm. <br/></td></tr>
+<tr class="separator:ab18176bb83e188ae71322dd192703a2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab87502c15cc8fe893b98a6c9eac873ee"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab87502c15cc8fe893b98a6c9eac873ee"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#ab87502c15cc8fe893b98a6c9eac873ee">set_parameters</a> (<a class="el" href="structtableTop__object__detection__parameters.html">tableTop_object_detection_parameters</a> &amp;opt)</td></tr>
+<tr class="memdesc:ab87502c15cc8fe893b98a6c9eac873ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set all the parameters of the algorithm accordingly to the one given to input. <br/></td></tr>
+<tr class="separator:ab87502c15cc8fe893b98a6c9eac873ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:aac70ce378ddcd44223d858d802129cab"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aac70ce378ddcd44223d858d802129cab"></a>
+std::vector&lt; <a class="el" href="structObject.html">Object</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>filt_objs</b></td></tr>
+<tr class="separator:aac70ce378ddcd44223d858d802129cab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56344b968f8153f5b648a97d37054421"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a56344b968f8153f5b648a97d37054421"></a>
+pcl::PointCloud<br class="typebreak"/>
+&lt; pcl::PointXYZRGBA &gt;::Ptr&#160;</td><td class="memItemRight" valign="bottom"><b>cloud</b></td></tr>
+<tr class="separator:a56344b968f8153f5b648a97d37054421"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac8bb94f0326e5fc4d200be0f4e8fb91"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aac8bb94f0326e5fc4d200be0f4e8fb91"></a>
+pcl::PointCloud<br class="typebreak"/>
+&lt; pcl::PointXYZL &gt;::Ptr&#160;</td><td class="memItemRight" valign="bottom"><b>lccp_labeled_cloud</b></td></tr>
+<tr class="separator:aac8bb94f0326e5fc4d200be0f4e8fb91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ed3c11e1df0c7a33fb1fbd9d3a5f894"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9ed3c11e1df0c7a33fb1fbd9d3a5f894"></a>
+std::multimap&lt; uint32_t, uint32_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>supervoxel_adjacency</b></td></tr>
+<tr class="separator:a9ed3c11e1df0c7a33fb1fbd9d3a5f894"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bd1542b47903f6276f15c3e5a36fa92"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2bd1542b47903f6276f15c3e5a36fa92"></a>
+pcl::PointCloud<br class="typebreak"/>
+&lt; pcl::PointXYZL &gt;::Ptr&#160;</td><td class="memItemRight" valign="bottom"><b>labeled_voxel_cloud</b></td></tr>
+<tr class="separator:a2bd1542b47903f6276f15c3e5a36fa92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab97af6adc432913d268e87b75827c4ca"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab97af6adc432913d268e87b75827c4ca"></a>
+std::map&lt; uint32_t, <br class="typebreak"/>
+pcl::Supervoxel<br class="typebreak"/>
+&lt; pcl::PointXYZRGBA &gt;::Ptr &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>supervoxel_clusters</b></td></tr>
+<tr class="separator:ab97af6adc432913d268e87b75827c4ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29347f1c3c957493a0e01f99c7473c7c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a29347f1c3c957493a0e01f99c7473c7c"></a>
+pcl::PointCloud<br class="typebreak"/>
+&lt; pcl::PointNormal &gt;::Ptr&#160;</td><td class="memItemRight" valign="bottom"><b>sv_normal_cloud</b></td></tr>
+<tr class="separator:a29347f1c3c957493a0e01f99c7473c7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33db99548dd0671a2dfb7dad87099443"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#a33db99548dd0671a2dfb7dad87099443">disable_transform</a></td></tr>
+<tr class="separator:a33db99548dd0671a2dfb7dad87099443"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1809213d6392f77863d5130a14790954"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#a1809213d6392f77863d5130a14790954">voxel_resolution</a></td></tr>
+<tr class="separator:a1809213d6392f77863d5130a14790954"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad70662d12a756512e3257f450e219452"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#ad70662d12a756512e3257f450e219452">seed_resolution</a></td></tr>
+<tr class="separator:ad70662d12a756512e3257f450e219452"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9e955940749a92932c6f07ea57962c4"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#ac9e955940749a92932c6f07ea57962c4">color_importance</a></td></tr>
+<tr class="separator:ac9e955940749a92932c6f07ea57962c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f3dae7482320cff5b5e5f587aa4b2c9"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#a9f3dae7482320cff5b5e5f587aa4b2c9">spatial_importance</a></td></tr>
+<tr class="separator:a9f3dae7482320cff5b5e5f587aa4b2c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7801dcdcbfe422f476cf51d14fedc28"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#ab7801dcdcbfe422f476cf51d14fedc28">normal_importance</a></td></tr>
+<tr class="separator:ab7801dcdcbfe422f476cf51d14fedc28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25bcdb951230b3354eb57718d133f964"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#a25bcdb951230b3354eb57718d133f964">concavity_tolerance_threshold</a></td></tr>
+<tr class="separator:a25bcdb951230b3354eb57718d133f964"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a836b570f07e3a26eb411dc270db326c4"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#a836b570f07e3a26eb411dc270db326c4">smoothness_threshold</a></td></tr>
+<tr class="separator:a836b570f07e3a26eb411dc270db326c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32d56ea41d136ab3f9f1b9e7a03918da"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#a32d56ea41d136ab3f9f1b9e7a03918da">min_segment_size</a></td></tr>
+<tr class="separator:a32d56ea41d136ab3f9f1b9e7a03918da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebb9e5790be333944c620a88d01f4660"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#aebb9e5790be333944c620a88d01f4660">use_extended_convexity</a></td></tr>
+<tr class="separator:aebb9e5790be333944c620a88d01f4660"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a504caa6abf5b6f9fefcbeb557ff7d2e2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#a504caa6abf5b6f9fefcbeb557ff7d2e2">use_sanity_criterion</a></td></tr>
+<tr class="separator:a504caa6abf5b6f9fefcbeb557ff7d2e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9bbf3c9ac5b0564d3dc45d5a3350fe3"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#ab9bbf3c9ac5b0564d3dc45d5a3350fe3">zmin</a></td></tr>
+<tr class="separator:ab9bbf3c9ac5b0564d3dc45d5a3350fe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac42ea218190506b3d367406088fde651"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#ac42ea218190506b3d367406088fde651">zmax</a></td></tr>
+<tr class="separator:ac42ea218190506b3d367406088fde651"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca1c3e7181470c613fe2044ca45adeba"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#aca1c3e7181470c613fe2044ca45adeba">th_points</a></td></tr>
+<tr class="separator:aca1c3e7181470c613fe2044ca45adeba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:ab4f09a192dca3e49be9b2404739bc1fb"><td class="memItemLeft" align="right" valign="top">static const bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#ab4f09a192dca3e49be9b2404739bc1fb">DISABLE_TRANSFORM</a> = false</td></tr>
+<tr class="separator:ab4f09a192dca3e49be9b2404739bc1fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afeb688c9dd5d7aee6a088da541e55014"><td class="memItemLeft" align="right" valign="top">static const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#afeb688c9dd5d7aee6a088da541e55014">VOXEL_RESOLUTION</a> = 0.0075f</td></tr>
+<tr class="separator:afeb688c9dd5d7aee6a088da541e55014"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a832ef2fe70977d729007e61e6ccb770a"><td class="memItemLeft" align="right" valign="top">static const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#a832ef2fe70977d729007e61e6ccb770a">SEED_RESOLUTION</a> = 0.03f</td></tr>
+<tr class="separator:a832ef2fe70977d729007e61e6ccb770a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52dc08af2d8170e8606c0d3470e153c3"><td class="memItemLeft" align="right" valign="top">static const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#a52dc08af2d8170e8606c0d3470e153c3">COLOR_IMPORTANCE</a> = 0.0f</td></tr>
+<tr class="separator:a52dc08af2d8170e8606c0d3470e153c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af15d61d5586d069969a1860ae222abbe"><td class="memItemLeft" align="right" valign="top">static const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#af15d61d5586d069969a1860ae222abbe">SPATIAL_IMPORTANCE</a> = 1.0f</td></tr>
+<tr class="separator:af15d61d5586d069969a1860ae222abbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30f53150234d3a804c50679ddf6836e3"><td class="memItemLeft" align="right" valign="top">static const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#a30f53150234d3a804c50679ddf6836e3">NORMAL_IMPORTANCE</a> = 4.0f</td></tr>
+<tr class="separator:a30f53150234d3a804c50679ddf6836e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64c15db6e48996b6de7b98ffc9571c4f"><td class="memItemLeft" align="right" valign="top">static const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#a64c15db6e48996b6de7b98ffc9571c4f">CONCAVITY_TOLERANCE_THRESHOLD</a> = 10</td></tr>
+<tr class="separator:a64c15db6e48996b6de7b98ffc9571c4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe8cbb3004c51aa6ff2260369715c693"><td class="memItemLeft" align="right" valign="top">static const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#abe8cbb3004c51aa6ff2260369715c693">SMOOTHNESS_THRESHOLD</a> = 0.1f</td></tr>
+<tr class="separator:abe8cbb3004c51aa6ff2260369715c693"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8670aeda90393e0a70d7bd2da572a3ac"><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#a8670aeda90393e0a70d7bd2da572a3ac">MIN_SEGMENT_SIZE</a> = 3</td></tr>
+<tr class="separator:a8670aeda90393e0a70d7bd2da572a3ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a556a200a38147471416607937e039848"><td class="memItemLeft" align="right" valign="top">static const bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#a556a200a38147471416607937e039848">USE_EXTENDED_CONVEXITY</a> = false</td></tr>
+<tr class="separator:a556a200a38147471416607937e039848"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af919465ec8fa6ab2a26bcee382854db0"><td class="memItemLeft" align="right" valign="top">static const bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#af919465ec8fa6ab2a26bcee382854db0">USE_SANITY_CRITERION</a> = true</td></tr>
+<tr class="separator:af919465ec8fa6ab2a26bcee382854db0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c96d6a75564938ee860dadf947d43c0"><td class="memItemLeft" align="right" valign="top">static const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#a1c96d6a75564938ee860dadf947d43c0">ZMIN</a> = 0.02</td></tr>
+<tr class="separator:a1c96d6a75564938ee860dadf947d43c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97f75cf23b9d5afb48b34054f751830c"><td class="memItemLeft" align="right" valign="top">static const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#a97f75cf23b9d5afb48b34054f751830c">ZMAX</a> = 2.</td></tr>
+<tr class="separator:a97f75cf23b9d5afb48b34054f751830c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4111f255b57f25cffdc7aa27d73226e9"><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableTop__Object__Detection.html#a4111f255b57f25cffdc7aa27d73226e9">TH_POINTS</a> = 400</td></tr>
+<tr class="separator:a4111f255b57f25cffdc7aa27d73226e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class to detect the table top objects in a cluttered scene segmenting the point cloud(organized or not) It returns through the</p>
 <div class="fragment"><div class="line"><a class="code" href="classTableTop__Object__Detection.html#a98e6dbcffc628ec9ff8c0b91bd07bf7d">get_segmented_objects</a>() </div>
 </div><!-- fragment --><p> a vector of Objects, where each object is defined by a point cloud and a label. The table must be the bigger plane in the point cloud. The algorithm is based on the lccp segmentation algorithm: <a href="http://docs.pointclouds.org/trunk/classpcl_1_1_l_c_c_p_segmentation.html">http://docs.pointclouds.org/trunk/classpcl_1_1_l_c_c_p_segmentation.html</a></p>
+<p>Author: Nicola Covallero (<a href="#" onclick="location.href='mai'+'lto:'+'nic'+'ol'+'aco'+'va'+'lle'+'ro'+'92@'+'gm'+'ail'+'.c'+'om'; return false;">nicol<span style="display: none;">.nosp@m.</span>acov<span style="display: none;">.nosp@m.</span>aller<span style="display: none;">.nosp@m.</span>o92@<span style="display: none;">.nosp@m.</span>gmail<span style="display: none;">.nosp@m.</span>.com</a>)</p>
 <p>How to use: </p>
 <div class="fragment"><div class="line"><a class="code" href="classTableTop__Object__Detection.html">TableTop_Object_Detection</a> seg;</div>
 <div class="line">seg(cloud); <span class="comment">//not pointer</span></div>
@@ -218,6 +328,147 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>get_th_points</b> ()</
 </div><!-- fragment --> 
 <p>Definition at line <a class="el" href="tabletop__object__detection_8h_source.html#l00091">91</a> of file <a class="el" href="tabletop__object__detection_8h_source.html">tabletop_object_detection.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a26381efc3b23b5b2496d08d5db6ed196"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TableTop_Object_Detection::addSupervoxelConnectionsToViewer </td>
+          <td>(</td>
+          <td class="paramtype">pcl::PointXYZRGBA &amp;&#160;</td>
+          <td class="paramname"><em>supervoxel_center</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">pcl::PointCloud&lt; pcl::PointXYZRGBA &gt; &amp;&#160;</td>
+          <td class="paramname"><em>adjacent_supervoxel_centers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>supervoxel_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">boost::shared_ptr&lt; pcl::visualization::PCLVisualizer &gt; &amp;&#160;</td>
+          <td class="paramname"><em>viewer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">supervoxel_center</td><td>center's point of the supervoxel </td></tr>
+    <tr><td class="paramname">adjacent_supervoxel_centers</td><td>point cloud of the adjacent supervoxel centers </td></tr>
+    <tr><td class="paramname">supervoxel_name</td><td>name of the poly shape </td></tr>
+    <tr><td class="paramname">viewer</td><td>visualizer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="tabletop__object__detection_8cpp_source.html#l00079">79</a> of file <a class="el" href="tabletop__object__detection_8cpp_source.html">tabletop_object_detection.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="tabletop__object__detection_8cpp_source.html#l00305">show_super_voxels()</a>.</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classTableTop__Object__Detection_a26381efc3b23b5b2496d08d5db6ed196_icgraph.png" border="0" usemap="#classTableTop__Object__Detection_a26381efc3b23b5b2496d08d5db6ed196_icgraph" alt=""/></div>
+<map name="classTableTop__Object__Detection_a26381efc3b23b5b2496d08d5db6ed196_icgraph" id="classTableTop__Object__Detection_a26381efc3b23b5b2496d08d5db6ed196_icgraph">
+<area shape="rect" id="node2" href="classTableTop__Object__Detection.html#a04a52e6b5c3c906514a0ef111075f93e" title="shows in the viewer the supervoxels " alt="" coords="299,5,483,46"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="af00bb688ce3a84cb3bd4edc8fe364d4b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TableTop_Object_Detection::detectObjectsOnTable </td>
+          <td>(</td>
+          <td class="paramtype">pcl::PointCloud&lt; pcl::PointXYZRGBA &gt;::Ptr&#160;</td>
+          <td class="paramname"><em>cloud</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>zmin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>zmax</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">pcl::PointIndices::Ptr&#160;</td>
+          <td class="paramname"><em>objectIndices</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>filter_input_cloud</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">cloud</td><td>input cloud </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">zmin</td><td>minimum distance perpendicular to the table [meters] to consider a point </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">zmax</td><td>maximum distance perpendicular to the table [meters] to consider a point </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="tabletop__object__detection_8cpp_source.html#l00108">108</a> of file <a class="el" href="tabletop__object__detection_8cpp_source.html">tabletop_object_detection.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="tabletop__object__detection_8cpp_source.html#l00198">segment()</a>.</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classTableTop__Object__Detection_af00bb688ce3a84cb3bd4edc8fe364d4b_icgraph.png" border="0" usemap="#classTableTop__Object__Detection_af00bb688ce3a84cb3bd4edc8fe364d4b_icgraph" alt=""/></div>
+<map name="classTableTop__Object__Detection_af00bb688ce3a84cb3bd4edc8fe364d4b_icgraph" id="classTableTop__Object__Detection_af00bb688ce3a84cb3bd4edc8fe364d4b_icgraph">
+<area shape="rect" id="node2" href="classTableTop__Object__Detection.html#a82b13b33ede8b98cc506715700f5760a" title="Detect and segment the objects on the table. " alt="" coords="237,5,421,46"/></map>
+</div>
+</p>
+
+</div>
+</div>
 <a class="anchor" id="a40051e60619a46e0a1fe3df06a6367d9"></a>
 <div class="memitem">
 <div class="memproto">
@@ -251,6 +502,17 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>get_th_points</b> ()</
 
 <p>Definition at line <a class="el" href="tabletop__object__detection_8cpp_source.html#l00013">13</a> of file <a class="el" href="tabletop__object__detection_8cpp_source.html">tabletop_object_detection.cpp</a>.</p>
 
+<p>References <a class="el" href="tabletop__object__detection_8cpp_source.html#l00028">set_parameters()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classTableTop__Object__Detection_a40051e60619a46e0a1fe3df06a6367d9_cgraph.png" border="0" usemap="#classTableTop__Object__Detection_a40051e60619a46e0a1fe3df06a6367d9_cgraph" alt=""/></div>
+<map name="classTableTop__Object__Detection_a40051e60619a46e0a1fe3df06a6367d9_cgraph" id="classTableTop__Object__Detection_a40051e60619a46e0a1fe3df06a6367d9_cgraph">
+<area shape="rect" id="node2" href="classTableTop__Object__Detection.html#ab87502c15cc8fe893b98a6c9eac873ee" title="Set all the parameters of the algorithm accordingly to the one given to input. " alt="" coords="237,5,421,46"/></map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a52028dcd2c15d9609ca4f5c0419c3e14"></a>
@@ -274,6 +536,17 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>get_th_points</b> ()</
 </dl>
 
 <p>Definition at line <a class="el" href="tabletop__object__detection_8cpp_source.html#l00021">21</a> of file <a class="el" href="tabletop__object__detection_8cpp_source.html">tabletop_object_detection.cpp</a>.</p>
+
+<p>References <a class="el" href="tabletop__object__detection_8cpp_source.html#l00052">set_default_parameters()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classTableTop__Object__Detection_a52028dcd2c15d9609ca4f5c0419c3e14_cgraph.png" border="0" usemap="#classTableTop__Object__Detection_a52028dcd2c15d9609ca4f5c0419c3e14_cgraph" alt=""/></div>
+<map name="classTableTop__Object__Detection_a52028dcd2c15d9609ca4f5c0419c3e14_cgraph" id="classTableTop__Object__Detection_a52028dcd2c15d9609ca4f5c0419c3e14_cgraph">
+<area shape="rect" id="node2" href="classTableTop__Object__Detection.html#ab18176bb83e188ae71322dd192703a2e" title="Set default parameters to the algorithm. " alt="" coords="237,5,421,46"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -315,7 +588,18 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>get_th_points</b> ()</
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="tabletop__object__detection_8cpp_source.html#l00321">321</a> of file <a class="el" href="tabletop__object__detection_8cpp_source.html">tabletop_object_detection.cpp</a>.</p>
+<p>Definition at line <a class="el" href="tabletop__object__detection_8cpp_source.html#l00305">305</a> of file <a class="el" href="tabletop__object__detection_8cpp_source.html">tabletop_object_detection.cpp</a>.</p>
+
+<p>References <a class="el" href="tabletop__object__detection_8cpp_source.html#l00079">addSupervoxelConnectionsToViewer()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classTableTop__Object__Detection_a04a52e6b5c3c906514a0ef111075f93e_cgraph.png" border="0" usemap="#classTableTop__Object__Detection_a04a52e6b5c3c906514a0ef111075f93e_cgraph" alt=""/></div>
+<map name="classTableTop__Object__Detection_a04a52e6b5c3c906514a0ef111075f93e_cgraph" id="classTableTop__Object__Detection_a04a52e6b5c3c906514a0ef111075f93e_cgraph">
+<area shape="rect" id="node2" href="classTableTop__Object__Detection.html#a26381efc3b23b5b2496d08d5db6ed196" title="shows supervoxel connections to viewer thorugh poly data shapes " alt="" coords="238,5,482,46"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -339,7 +623,18 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>get_th_points</b> ()</
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="tabletop__object__detection_8cpp_source.html#l00367">367</a> of file <a class="el" href="tabletop__object__detection_8cpp_source.html">tabletop_object_detection.cpp</a>.</p>
+<p>Definition at line <a class="el" href="tabletop__object__detection_8cpp_source.html#l00351">351</a> of file <a class="el" href="tabletop__object__detection_8cpp_source.html">tabletop_object_detection.cpp</a>.</p>
+
+<p>References <a class="el" href="tabletop__object__detection_8cpp_source.html#l00079">addSupervoxelConnectionsToViewer()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classTableTop__Object__Detection_a892f9cc8b0ab76b1fcac802c4a55cb55_cgraph.png" border="0" usemap="#classTableTop__Object__Detection_a892f9cc8b0ab76b1fcac802c4a55cb55_cgraph" alt=""/></div>
+<map name="classTableTop__Object__Detection_a892f9cc8b0ab76b1fcac802c4a55cb55_cgraph" id="classTableTop__Object__Detection_a892f9cc8b0ab76b1fcac802c4a55cb55_cgraph">
+<area shape="rect" id="node2" href="classTableTop__Object__Detection.html#a26381efc3b23b5b2496d08d5db6ed196" title="shows supervoxel connections to viewer thorugh poly data shapes " alt="" coords="238,5,482,46"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -363,7 +658,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>get_th_points</b> ()</
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="tabletop__object__detection_8cpp_source.html#l00404">404</a> of file <a class="el" href="tabletop__object__detection_8cpp_source.html">tabletop_object_detection.cpp</a>.</p>
+<p>Definition at line <a class="el" href="tabletop__object__detection_8cpp_source.html#l00388">388</a> of file <a class="el" href="tabletop__object__detection_8cpp_source.html">tabletop_object_detection.cpp</a>.</p>
 
 </div>
 </div>
@@ -387,7 +682,708 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>get_th_points</b> ()</
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="tabletop__object__detection_8cpp_source.html#l00430">430</a> of file <a class="el" href="tabletop__object__detection_8cpp_source.html">tabletop_object_detection.cpp</a>.</p>
+<p>Definition at line <a class="el" href="tabletop__object__detection_8cpp_source.html#l00414">414</a> of file <a class="el" href="tabletop__object__detection_8cpp_source.html">tabletop_object_detection.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Field Documentation</h2>
+<a class="anchor" id="ab4f09a192dca3e49be9b2404739bc1fb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const bool TableTop_Object_Detection::DISABLE_TRANSFORM = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>default value of disable_transform for supervoxel algorithm </p>
+
+<p>Definition at line <a class="el" href="tabletop__object__detection_8h_source.html#l00097">97</a> of file <a class="el" href="tabletop__object__detection_8h_source.html">tabletop_object_detection.h</a>.</p>
+
+<p>Referenced by <a class="el" href="tabletop__object__detection_8cpp_source.html#l00170">get_default_parameters()</a>, and <a class="el" href="tabletop__object__detection_8cpp_source.html#l00052">set_default_parameters()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afeb688c9dd5d7aee6a088da541e55014"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const double TableTop_Object_Detection::VOXEL_RESOLUTION = 0.0075f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>default value of voxel_resolution for supervoxel algorithm </p>
+
+<p>Definition at line <a class="el" href="tabletop__object__detection_8h_source.html#l00098">98</a> of file <a class="el" href="tabletop__object__detection_8h_source.html">tabletop_object_detection.h</a>.</p>
+
+<p>Referenced by <a class="el" href="tabletop__object__detection_8cpp_source.html#l00170">get_default_parameters()</a>, and <a class="el" href="tabletop__object__detection_8cpp_source.html#l00052">set_default_parameters()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a832ef2fe70977d729007e61e6ccb770a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const double TableTop_Object_Detection::SEED_RESOLUTION = 0.03f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>default value of seed_resolution for supervoxel algorithm </p>
+
+<p>Definition at line <a class="el" href="tabletop__object__detection_8h_source.html#l00099">99</a> of file <a class="el" href="tabletop__object__detection_8h_source.html">tabletop_object_detection.h</a>.</p>
+
+<p>Referenced by <a class="el" href="tabletop__object__detection_8cpp_source.html#l00170">get_default_parameters()</a>, and <a class="el" href="tabletop__object__detection_8cpp_source.html#l00052">set_default_parameters()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a52dc08af2d8170e8606c0d3470e153c3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const double TableTop_Object_Detection::COLOR_IMPORTANCE = 0.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>default value of color_importance for supervoxel algorithm </p>
+
+<p>Definition at line <a class="el" href="tabletop__object__detection_8h_source.html#l00100">100</a> of file <a class="el" href="tabletop__object__detection_8h_source.html">tabletop_object_detection.h</a>.</p>
+
+<p>Referenced by <a class="el" href="tabletop__object__detection_8cpp_source.html#l00170">get_default_parameters()</a>, and <a class="el" href="tabletop__object__detection_8cpp_source.html#l00052">set_default_parameters()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af15d61d5586d069969a1860ae222abbe"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const double TableTop_Object_Detection::SPATIAL_IMPORTANCE = 1.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>default value of spatial_importance for supervoxel algorithm </p>
+
+<p>Definition at line <a class="el" href="tabletop__object__detection_8h_source.html#l00101">101</a> of file <a class="el" href="tabletop__object__detection_8h_source.html">tabletop_object_detection.h</a>.</p>
+
+<p>Referenced by <a class="el" href="tabletop__object__detection_8cpp_source.html#l00170">get_default_parameters()</a>, and <a class="el" href="tabletop__object__detection_8cpp_source.html#l00052">set_default_parameters()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a30f53150234d3a804c50679ddf6836e3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const double TableTop_Object_Detection::NORMAL_IMPORTANCE = 4.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>default value of normal_importance for supervoxel algorithm </p>
+
+<p>Definition at line <a class="el" href="tabletop__object__detection_8h_source.html#l00102">102</a> of file <a class="el" href="tabletop__object__detection_8h_source.html">tabletop_object_detection.h</a>.</p>
+
+<p>Referenced by <a class="el" href="tabletop__object__detection_8cpp_source.html#l00170">get_default_parameters()</a>, and <a class="el" href="tabletop__object__detection_8cpp_source.html#l00052">set_default_parameters()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a64c15db6e48996b6de7b98ffc9571c4f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const double TableTop_Object_Detection::CONCAVITY_TOLERANCE_THRESHOLD = 10</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>default value of concavity_tolerance_threshold for lccp algorithm </p>
+
+<p>Definition at line <a class="el" href="tabletop__object__detection_8h_source.html#l00105">105</a> of file <a class="el" href="tabletop__object__detection_8h_source.html">tabletop_object_detection.h</a>.</p>
+
+<p>Referenced by <a class="el" href="tabletop__object__detection_8cpp_source.html#l00170">get_default_parameters()</a>, and <a class="el" href="tabletop__object__detection_8cpp_source.html#l00052">set_default_parameters()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abe8cbb3004c51aa6ff2260369715c693"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const double TableTop_Object_Detection::SMOOTHNESS_THRESHOLD = 0.1f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>default value of smoothness_threshold for lccp algorithm </p>
+
+<p>Definition at line <a class="el" href="tabletop__object__detection_8h_source.html#l00106">106</a> of file <a class="el" href="tabletop__object__detection_8h_source.html">tabletop_object_detection.h</a>.</p>
+
+<p>Referenced by <a class="el" href="tabletop__object__detection_8cpp_source.html#l00170">get_default_parameters()</a>, and <a class="el" href="tabletop__object__detection_8cpp_source.html#l00052">set_default_parameters()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8670aeda90393e0a70d7bd2da572a3ac"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int TableTop_Object_Detection::MIN_SEGMENT_SIZE = 3</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>default value of min_segment_size for lccp algorithm </p>
+
+<p>Definition at line <a class="el" href="tabletop__object__detection_8h_source.html#l00107">107</a> of file <a class="el" href="tabletop__object__detection_8h_source.html">tabletop_object_detection.h</a>.</p>
+
+<p>Referenced by <a class="el" href="tabletop__object__detection_8cpp_source.html#l00170">get_default_parameters()</a>, and <a class="el" href="tabletop__object__detection_8cpp_source.html#l00052">set_default_parameters()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a556a200a38147471416607937e039848"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const bool TableTop_Object_Detection::USE_EXTENDED_CONVEXITY = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>default value of use_extended_convexity for lccp algorithm </p>
+
+<p>Definition at line <a class="el" href="tabletop__object__detection_8h_source.html#l00108">108</a> of file <a class="el" href="tabletop__object__detection_8h_source.html">tabletop_object_detection.h</a>.</p>
+
+<p>Referenced by <a class="el" href="tabletop__object__detection_8cpp_source.html#l00170">get_default_parameters()</a>, and <a class="el" href="tabletop__object__detection_8cpp_source.html#l00052">set_default_parameters()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af919465ec8fa6ab2a26bcee382854db0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const bool TableTop_Object_Detection::USE_SANITY_CRITERION = true</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>default value of use_sanity_criterion for lccp algorithm </p>
+
+<p>Definition at line <a class="el" href="tabletop__object__detection_8h_source.html#l00109">109</a> of file <a class="el" href="tabletop__object__detection_8h_source.html">tabletop_object_detection.h</a>.</p>
+
+<p>Referenced by <a class="el" href="tabletop__object__detection_8cpp_source.html#l00170">get_default_parameters()</a>, and <a class="el" href="tabletop__object__detection_8cpp_source.html#l00052">set_default_parameters()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1c96d6a75564938ee860dadf947d43c0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const double TableTop_Object_Detection::ZMIN = 0.02</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Default value of the minimum distance for object detection on the table - used inside detectedObjectsTable() </p>
+
+<p>Definition at line <a class="el" href="tabletop__object__detection_8h_source.html#l00112">112</a> of file <a class="el" href="tabletop__object__detection_8h_source.html">tabletop_object_detection.h</a>.</p>
+
+<p>Referenced by <a class="el" href="tabletop__object__detection_8cpp_source.html#l00170">get_default_parameters()</a>, and <a class="el" href="tabletop__object__detection_8cpp_source.html#l00052">set_default_parameters()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a97f75cf23b9d5afb48b34054f751830c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const double TableTop_Object_Detection::ZMAX = 2.</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Default value of the maxmimum distance for object detection on the table - used inside detectedObjectsTable() </p>
+
+<p>Definition at line <a class="el" href="tabletop__object__detection_8h_source.html#l00113">113</a> of file <a class="el" href="tabletop__object__detection_8h_source.html">tabletop_object_detection.h</a>.</p>
+
+<p>Referenced by <a class="el" href="tabletop__object__detection_8cpp_source.html#l00170">get_default_parameters()</a>, and <a class="el" href="tabletop__object__detection_8cpp_source.html#l00052">set_default_parameters()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4111f255b57f25cffdc7aa27d73226e9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int TableTop_Object_Detection::TH_POINTS = 400</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Default value of the threshold of minimum points required to consider a cluster as valid </p>
+
+<p>Definition at line <a class="el" href="tabletop__object__detection_8h_source.html#l00114">114</a> of file <a class="el" href="tabletop__object__detection_8h_source.html">tabletop_object_detection.h</a>.</p>
+
+<p>Referenced by <a class="el" href="tabletop__object__detection_8cpp_source.html#l00170">get_default_parameters()</a>, and <a class="el" href="tabletop__object__detection_8cpp_source.html#l00052">set_default_parameters()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a33db99548dd0671a2dfb7dad87099443"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool TableTop_Object_Detection::disable_transform</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>value of disable_transform for supervoxel algorithm </p>
+
+<p>Definition at line <a class="el" href="tabletop__object__detection_8h_source.html#l00146">146</a> of file <a class="el" href="tabletop__object__detection_8h_source.html">tabletop_object_detection.h</a>.</p>
+
+<p>Referenced by <a class="el" href="tabletop__object__detection_8cpp_source.html#l00450">print_parameters()</a>, <a class="el" href="tabletop__object__detection_8cpp_source.html#l00052">set_default_parameters()</a>, and <a class="el" href="tabletop__object__detection_8cpp_source.html#l00028">set_parameters()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1809213d6392f77863d5130a14790954"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double TableTop_Object_Detection::voxel_resolution</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>value of voxel_resolution for supervoxel algorithm </p>
+
+<p>Definition at line <a class="el" href="tabletop__object__detection_8h_source.html#l00147">147</a> of file <a class="el" href="tabletop__object__detection_8h_source.html">tabletop_object_detection.h</a>.</p>
+
+<p>Referenced by <a class="el" href="tabletop__object__detection_8cpp_source.html#l00450">print_parameters()</a>, <a class="el" href="tabletop__object__detection_8cpp_source.html#l00198">segment()</a>, <a class="el" href="tabletop__object__detection_8cpp_source.html#l00052">set_default_parameters()</a>, and <a class="el" href="tabletop__object__detection_8cpp_source.html#l00028">set_parameters()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad70662d12a756512e3257f450e219452"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double TableTop_Object_Detection::seed_resolution</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>value of seed_resolution for supervoxel algorithm </p>
+
+<p>Definition at line <a class="el" href="tabletop__object__detection_8h_source.html#l00148">148</a> of file <a class="el" href="tabletop__object__detection_8h_source.html">tabletop_object_detection.h</a>.</p>
+
+<p>Referenced by <a class="el" href="tabletop__object__detection_8cpp_source.html#l00450">print_parameters()</a>, <a class="el" href="tabletop__object__detection_8cpp_source.html#l00198">segment()</a>, <a class="el" href="tabletop__object__detection_8cpp_source.html#l00052">set_default_parameters()</a>, and <a class="el" href="tabletop__object__detection_8cpp_source.html#l00028">set_parameters()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac9e955940749a92932c6f07ea57962c4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double TableTop_Object_Detection::color_importance</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>value of color_importance for supervoxel algorithm </p>
+
+<p>Definition at line <a class="el" href="tabletop__object__detection_8h_source.html#l00149">149</a> of file <a class="el" href="tabletop__object__detection_8h_source.html">tabletop_object_detection.h</a>.</p>
+
+<p>Referenced by <a class="el" href="tabletop__object__detection_8cpp_source.html#l00450">print_parameters()</a>, <a class="el" href="tabletop__object__detection_8cpp_source.html#l00198">segment()</a>, <a class="el" href="tabletop__object__detection_8cpp_source.html#l00052">set_default_parameters()</a>, and <a class="el" href="tabletop__object__detection_8cpp_source.html#l00028">set_parameters()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9f3dae7482320cff5b5e5f587aa4b2c9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double TableTop_Object_Detection::spatial_importance</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>value of spatial_importance for supervoxel algorithm </p>
+
+<p>Definition at line <a class="el" href="tabletop__object__detection_8h_source.html#l00150">150</a> of file <a class="el" href="tabletop__object__detection_8h_source.html">tabletop_object_detection.h</a>.</p>
+
+<p>Referenced by <a class="el" href="tabletop__object__detection_8cpp_source.html#l00450">print_parameters()</a>, <a class="el" href="tabletop__object__detection_8cpp_source.html#l00198">segment()</a>, <a class="el" href="tabletop__object__detection_8cpp_source.html#l00052">set_default_parameters()</a>, and <a class="el" href="tabletop__object__detection_8cpp_source.html#l00028">set_parameters()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab7801dcdcbfe422f476cf51d14fedc28"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double TableTop_Object_Detection::normal_importance</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>value of normal_importance for supervoxel algorithm </p>
+
+<p>Definition at line <a class="el" href="tabletop__object__detection_8h_source.html#l00151">151</a> of file <a class="el" href="tabletop__object__detection_8h_source.html">tabletop_object_detection.h</a>.</p>
+
+<p>Referenced by <a class="el" href="tabletop__object__detection_8cpp_source.html#l00450">print_parameters()</a>, <a class="el" href="tabletop__object__detection_8cpp_source.html#l00198">segment()</a>, <a class="el" href="tabletop__object__detection_8cpp_source.html#l00052">set_default_parameters()</a>, and <a class="el" href="tabletop__object__detection_8cpp_source.html#l00028">set_parameters()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a25bcdb951230b3354eb57718d133f964"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double TableTop_Object_Detection::concavity_tolerance_threshold</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>value of concavity_tolerance_threshold for supervoxel algorithm </p>
+
+<p>Definition at line <a class="el" href="tabletop__object__detection_8h_source.html#l00154">154</a> of file <a class="el" href="tabletop__object__detection_8h_source.html">tabletop_object_detection.h</a>.</p>
+
+<p>Referenced by <a class="el" href="tabletop__object__detection_8cpp_source.html#l00450">print_parameters()</a>, <a class="el" href="tabletop__object__detection_8cpp_source.html#l00198">segment()</a>, <a class="el" href="tabletop__object__detection_8cpp_source.html#l00052">set_default_parameters()</a>, and <a class="el" href="tabletop__object__detection_8cpp_source.html#l00028">set_parameters()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a836b570f07e3a26eb411dc270db326c4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double TableTop_Object_Detection::smoothness_threshold</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>value of smoothness_threshold for supervoxel algorithm </p>
+
+<p>Definition at line <a class="el" href="tabletop__object__detection_8h_source.html#l00155">155</a> of file <a class="el" href="tabletop__object__detection_8h_source.html">tabletop_object_detection.h</a>.</p>
+
+<p>Referenced by <a class="el" href="tabletop__object__detection_8cpp_source.html#l00450">print_parameters()</a>, <a class="el" href="tabletop__object__detection_8cpp_source.html#l00198">segment()</a>, <a class="el" href="tabletop__object__detection_8cpp_source.html#l00052">set_default_parameters()</a>, and <a class="el" href="tabletop__object__detection_8cpp_source.html#l00028">set_parameters()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a32d56ea41d136ab3f9f1b9e7a03918da"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int TableTop_Object_Detection::min_segment_size</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>value of min_segment_size for supervoxel algorithm </p>
+
+<p>Definition at line <a class="el" href="tabletop__object__detection_8h_source.html#l00156">156</a> of file <a class="el" href="tabletop__object__detection_8h_source.html">tabletop_object_detection.h</a>.</p>
+
+<p>Referenced by <a class="el" href="tabletop__object__detection_8cpp_source.html#l00450">print_parameters()</a>, <a class="el" href="tabletop__object__detection_8cpp_source.html#l00198">segment()</a>, <a class="el" href="tabletop__object__detection_8cpp_source.html#l00052">set_default_parameters()</a>, and <a class="el" href="tabletop__object__detection_8cpp_source.html#l00028">set_parameters()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aebb9e5790be333944c620a88d01f4660"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool TableTop_Object_Detection::use_extended_convexity</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>value of use_extended_convexity for supervoxel algorithm </p>
+
+<p>Definition at line <a class="el" href="tabletop__object__detection_8h_source.html#l00157">157</a> of file <a class="el" href="tabletop__object__detection_8h_source.html">tabletop_object_detection.h</a>.</p>
+
+<p>Referenced by <a class="el" href="tabletop__object__detection_8cpp_source.html#l00450">print_parameters()</a>, <a class="el" href="tabletop__object__detection_8cpp_source.html#l00198">segment()</a>, <a class="el" href="tabletop__object__detection_8cpp_source.html#l00052">set_default_parameters()</a>, and <a class="el" href="tabletop__object__detection_8cpp_source.html#l00028">set_parameters()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a504caa6abf5b6f9fefcbeb557ff7d2e2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool TableTop_Object_Detection::use_sanity_criterion</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>value of use_sanity_criterion for supervoxel algorithm </p>
+
+<p>Definition at line <a class="el" href="tabletop__object__detection_8h_source.html#l00158">158</a> of file <a class="el" href="tabletop__object__detection_8h_source.html">tabletop_object_detection.h</a>.</p>
+
+<p>Referenced by <a class="el" href="tabletop__object__detection_8cpp_source.html#l00450">print_parameters()</a>, <a class="el" href="tabletop__object__detection_8cpp_source.html#l00198">segment()</a>, <a class="el" href="tabletop__object__detection_8cpp_source.html#l00052">set_default_parameters()</a>, and <a class="el" href="tabletop__object__detection_8cpp_source.html#l00028">set_parameters()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab9bbf3c9ac5b0564d3dc45d5a3350fe3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double TableTop_Object_Detection::zmin</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Minimum distance orthogonal to the table plane to be considered as a tabletop point </p>
+
+<p>Definition at line <a class="el" href="tabletop__object__detection_8h_source.html#l00161">161</a> of file <a class="el" href="tabletop__object__detection_8h_source.html">tabletop_object_detection.h</a>.</p>
+
+<p>Referenced by <a class="el" href="tabletop__object__detection_8cpp_source.html#l00450">print_parameters()</a>, <a class="el" href="tabletop__object__detection_8cpp_source.html#l00198">segment()</a>, <a class="el" href="tabletop__object__detection_8cpp_source.html#l00052">set_default_parameters()</a>, and <a class="el" href="tabletop__object__detection_8cpp_source.html#l00028">set_parameters()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac42ea218190506b3d367406088fde651"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double TableTop_Object_Detection::zmax</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Maximum distance orthogonal to the table plane to be considered as a tabletop point </p>
+
+<p>Definition at line <a class="el" href="tabletop__object__detection_8h_source.html#l00162">162</a> of file <a class="el" href="tabletop__object__detection_8h_source.html">tabletop_object_detection.h</a>.</p>
+
+<p>Referenced by <a class="el" href="tabletop__object__detection_8cpp_source.html#l00450">print_parameters()</a>, <a class="el" href="tabletop__object__detection_8cpp_source.html#l00198">segment()</a>, <a class="el" href="tabletop__object__detection_8cpp_source.html#l00052">set_default_parameters()</a>, and <a class="el" href="tabletop__object__detection_8cpp_source.html#l00028">set_parameters()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aca1c3e7181470c613fe2044ca45adeba"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int TableTop_Object_Detection::th_points</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>threshold of minimum point required to consider a cluster as valid </p>
+
+<p>Definition at line <a class="el" href="tabletop__object__detection_8h_source.html#l00163">163</a> of file <a class="el" href="tabletop__object__detection_8h_source.html">tabletop_object_detection.h</a>.</p>
+
+<p>Referenced by <a class="el" href="tabletop__object__detection_8cpp_source.html#l00450">print_parameters()</a>, <a class="el" href="tabletop__object__detection_8cpp_source.html#l00198">segment()</a>, <a class="el" href="tabletop__object__detection_8cpp_source.html#l00052">set_default_parameters()</a>, and <a class="el" href="tabletop__object__detection_8cpp_source.html#l00028">set_parameters()</a>.</p>
 
 </div>
 </div>
@@ -398,7 +1394,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>get_th_points</b> ()</
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Feb 19 2016 15:00:58 for tabletop_object_detection by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Feb 19 2016 18:47:13 for tabletop_object_detection by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

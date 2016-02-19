@@ -73,6 +73,8 @@ struct tableTop_object_detection_parameters
 * The algorithm is based on the lccp segmentation algorithm:
 * http://docs.pointclouds.org/trunk/classpcl_1_1_l_c_c_p_segmentation.html
 *
+* Author: Nicola Covallero (nicolacovallero92@gmail.com) 
+*
 * How to use:
 * \code
 * TableTop_Object_Detection seg;
@@ -88,83 +90,88 @@ struct tableTop_object_detection_parameters
 
 class TableTop_Object_Detection
 {
-  // -------- Default Parameters --------
-  // supervoxels parameters 
-  static const bool DISABLE_TRANSFORM = false; /**< default value of disable_transform for supervoxel algorithm*/
-  static const double VOXEL_RESOLUTION = 0.0075f;/**< default value of voxel_resolution for supervoxel algorithm*/
-  static const double SEED_RESOLUTION = 0.03f; /**< default value of seed_resolution for supervoxel algorithm*/
-  static const double COLOR_IMPORTANCE = 0.0f;/**< default value of color_importance for supervoxel algorithm*/
-  static const double SPATIAL_IMPORTANCE = 1.0f;/**< default value of spatial_importance for supervoxel algorithm*/
-  static const double NORMAL_IMPORTANCE = 4.0f;/**< default value of normal_importance for supervoxel algorithm*/
+  protected:
 
-  // LCCPSegmentation parameters
-  static const double CONCAVITY_TOLERANCE_THRESHOLD = 10;/**< default value of concavity_tolerance_threshold for lccp algorithm*/
-  static const double SMOOTHNESS_THRESHOLD = 0.1f;/**< default value of smoothness_threshold for lccp algorithm*/
-  static const int MIN_SEGMENT_SIZE = 3;/**< default value of min_segment_size for lccp algorithm*/
-  static const bool USE_EXTENDED_CONVEXITY = false;/**< default value of use_extended_convexity for lccp algorithm*/
-  static const bool USE_SANITY_CRITERION = true;/**< default value of use_sanity_criterion for lccp algorithm*/
-      
-      // Others parameters
-  static const double ZMIN = 0.02;/**<  Default value of the minimum distance for object detection on the table - used inside detectedObjectsTable() */
-  static const double ZMAX = 2.; /**<  Default value of the maxmimum distance for object detection on the table - used inside detectedObjectsTable() */
-  static const int TH_POINTS = 400; /**< Default value of the threshold of minimum points required to consider a cluster as valid */
-  //-------------------
+    // -------- Default Parameters --------
+    // supervoxels parameters 
+    static const bool DISABLE_TRANSFORM = false; /**< default value of disable_transform for supervoxel algorithm*/
+    static const double VOXEL_RESOLUTION = 0.0075f;/**< default value of voxel_resolution for supervoxel algorithm*/
+    static const double SEED_RESOLUTION = 0.03f; /**< default value of seed_resolution for supervoxel algorithm*/
+    static const double COLOR_IMPORTANCE = 0.0f;/**< default value of color_importance for supervoxel algorithm*/
+    static const double SPATIAL_IMPORTANCE = 1.0f;/**< default value of spatial_importance for supervoxel algorithm*/
+    static const double NORMAL_IMPORTANCE = 4.0f;/**< default value of normal_importance for supervoxel algorithm*/
 
-  std::vector<Object> filt_objs;
-  pcl::PointCloud<pcl::PointXYZRGBA>::Ptr cloud;
-  pcl::PointCloud<pcl::PointXYZL>::Ptr lccp_labeled_cloud;
-  std::multimap<uint32_t, uint32_t> supervoxel_adjacency;
-  pcl::PointCloud<pcl::PointXYZL>::Ptr labeled_voxel_cloud;
-  std::map <uint32_t, pcl::Supervoxel<pcl::PointXYZRGBA>::Ptr > supervoxel_clusters;
-  pcl::PointCloud<pcl::PointNormal>::Ptr sv_normal_cloud;
+    // LCCPSegmentation parameters
+    static const double CONCAVITY_TOLERANCE_THRESHOLD = 10;/**< default value of concavity_tolerance_threshold for lccp algorithm*/
+    static const double SMOOTHNESS_THRESHOLD = 0.1f;/**< default value of smoothness_threshold for lccp algorithm*/
+    static const int MIN_SEGMENT_SIZE = 3;/**< default value of min_segment_size for lccp algorithm*/
+    static const bool USE_EXTENDED_CONVEXITY = false;/**< default value of use_extended_convexity for lccp algorithm*/
+    static const bool USE_SANITY_CRITERION = true;/**< default value of use_sanity_criterion for lccp algorithm*/
+        
+        // Others parameters
+    static const double ZMIN = 0.02;/**<  Default value of the minimum distance for object detection on the table - used inside detectedObjectsTable() */
+    static const double ZMAX = 2.; /**<  Default value of the maxmimum distance for object detection on the table - used inside detectedObjectsTable() */
+    static const int TH_POINTS = 400; /**< Default value of the threshold of minimum points required to consider a cluster as valid */
+    //-------------------
 
-  /*! \brief shows supervoxel connections to viewer thorugh poly data shapes  
-  *
-  *  \param supervoxel_center center's point of the supervoxel
-  *  \param adjacent_supervoxel_centers point cloud of the adjacent supervoxel centers
-  *  \param supervoxel_name name of the poly shape 
-  *  \param viewer visualizer
-  */
-  void addSupervoxelConnectionsToViewer (pcl::PointXYZRGBA &supervoxel_center,
-                                        pcl::PointCloud<pcl::PointXYZRGBA>& adjacent_supervoxel_centers,
-                                        std::string supervoxel_name,
-                                        boost::shared_ptr<pcl::visualization::PCLVisualizer> & viewer);
+    std::vector<Object> filt_objs;
+    pcl::PointCloud<pcl::PointXYZRGBA>::Ptr cloud;
+    pcl::PointCloud<pcl::PointXYZL>::Ptr lccp_labeled_cloud;
+    std::multimap<uint32_t, uint32_t> supervoxel_adjacency;
+    pcl::PointCloud<pcl::PointXYZL>::Ptr labeled_voxel_cloud;
+    std::map <uint32_t, pcl::Supervoxel<pcl::PointXYZRGBA>::Ptr > supervoxel_clusters;
+    pcl::PointCloud<pcl::PointNormal>::Ptr sv_normal_cloud;
 
-  /*! \brief detects objects that stands on a table
-  *
-  *  \param[in] cloud input cloud 
-  *  \param[in] zmin minimum distance perpendicular to the table [meters] to consider a point
-  *  \param[in] zmax maximum distance perpendicular to the table [meters] to consider a point
-  */
-  void detectObjectsOnTable(pcl::PointCloud<pcl::PointXYZRGBA>::Ptr cloud, double zmin, double zmax, pcl::PointIndices::Ptr objectIndices, bool filter_input_cloud);
+    /*! \brief shows supervoxel connections to viewer thorugh poly data shapes  
+    *
+    *  \param supervoxel_center center's point of the supervoxel
+    *  \param adjacent_supervoxel_centers point cloud of the adjacent supervoxel centers
+    *  \param supervoxel_name name of the poly shape 
+    *  \param viewer visualizer
+    */
+    void addSupervoxelConnectionsToViewer (pcl::PointXYZRGBA &supervoxel_center,
+                                          pcl::PointCloud<pcl::PointXYZRGBA>& adjacent_supervoxel_centers,
+                                          std::string supervoxel_name,
+                                          boost::shared_ptr<pcl::visualization::PCLVisualizer> & viewer);
 
-  //supervoxels parameters 
-  bool disable_transform;/**< value of disable_transform for supervoxel algorithm*/
-  double voxel_resolution; /**< value of voxel_resolution for supervoxel algorithm*/
-  double seed_resolution; /**< value of seed_resolution for supervoxel algorithm*/
-  double color_importance;/**< value of color_importance for supervoxel algorithm*/
-  double spatial_importance;/**< value of spatial_importance for supervoxel algorithm*/
-  double normal_importance;/**< value of normal_importance for supervoxel algorithm*/
+    /*! \brief detects objects that stands on a table
+    *
+    *  \param[in] cloud input cloud 
+    *  \param[in] zmin minimum distance perpendicular to the table [meters] to consider a point
+    *  \param[in] zmax maximum distance perpendicular to the table [meters] to consider a point
+    */
+    void detectObjectsOnTable(pcl::PointCloud<pcl::PointXYZRGBA>::Ptr cloud, double zmin, double zmax, pcl::PointIndices::Ptr objectIndices, bool filter_input_cloud);
 
-  // LCCPSegmentation parameters
-  double concavity_tolerance_threshold;/**< value of concavity_tolerance_threshold for supervoxel algorithm*/
-  double smoothness_threshold;/**< value of smoothness_threshold for supervoxel algorithm*/
-  int min_segment_size;/**< value of min_segment_size for supervoxel algorithm*/
-  bool use_extended_convexity;/**< value of use_extended_convexity for supervoxel algorithm*/
-  bool use_sanity_criterion;/**< value of use_sanity_criterion for supervoxel algorithm*/
-      
-  // other parameters    
-  double zmin; /**< Minimum distance orthogonal to the table plane to be considered as a tabletop point */
-  double zmax; /**< Maximum distance orthogonal to the table plane to be considered as a tabletop point */    
-  int th_points; /**< threshold of minimum point required to consider a cluster as valid */
+    //supervoxels parameters 
+    bool disable_transform;/**< value of disable_transform for supervoxel algorithm*/
+    double voxel_resolution; /**< value of voxel_resolution for supervoxel algorithm*/
+    double seed_resolution; /**< value of seed_resolution for supervoxel algorithm*/
+    double color_importance;/**< value of color_importance for supervoxel algorithm*/
+    double spatial_importance;/**< value of spatial_importance for supervoxel algorithm*/
+    double normal_importance;/**< value of normal_importance for supervoxel algorithm*/
 
-  /*! \brief Set default parameters to the algorithm
-  */
-  void set_default_parameters();
+    // LCCPSegmentation parameters
+    double concavity_tolerance_threshold;/**< value of concavity_tolerance_threshold for supervoxel algorithm*/
+    double smoothness_threshold;/**< value of smoothness_threshold for supervoxel algorithm*/
+    int min_segment_size;/**< value of min_segment_size for supervoxel algorithm*/
+    bool use_extended_convexity;/**< value of use_extended_convexity for supervoxel algorithm*/
+    bool use_sanity_criterion;/**< value of use_sanity_criterion for supervoxel algorithm*/
+        
+    // other parameters    
+    double zmin; /**< Minimum distance orthogonal to the table plane to be considered as a tabletop point */
+    double zmax; /**< Maximum distance orthogonal to the table plane to be considered as a tabletop point */    
+    int th_points; /**< threshold of minimum point required to consider a cluster as valid */
 
-  /*! \brief Set all the parameters of the algorithm accordingly to the one given to input   
-  */
-  void set_parameters(tableTop_object_detection_parameters & opt);
+
+    bool initialized; /**< boolean variable to keep track if the class has been initialized*/
+
+    /*! \brief Set default parameters to the algorithm
+    */
+    void set_default_parameters();
+
+    /*! \brief Set all the parameters of the algorithm accordingly to the one given to input   
+    */
+    void set_parameters(tableTop_object_detection_parameters & opt);
 
   public:		
 
@@ -183,7 +190,7 @@ class TableTop_Object_Detection
     */
     void init(pcl::PointCloud<pcl::PointXYZRGBA> input_cloud,
               tableTop_object_detection_parameters &opt);
-
+    
     /*! \brief Class initializer, with default parameters
     *
     * \param input_cloud input cloud to segment 
