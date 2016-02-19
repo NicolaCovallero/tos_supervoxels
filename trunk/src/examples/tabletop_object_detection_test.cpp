@@ -105,7 +105,7 @@ main (int argc, char ** argv)
   //----------------------------------------
   //TableTop_Object_Detection segLCCP;
   std::vector<Object> seg_objs; //("seg_objs" stands for "filtered objects") 
-  segLCCP.init(*cloud);
+  segLCCP.init(*cloud,opt);
   segLCCP.print_parameters();
   segLCCP.segment();
   seg_objs = segLCCP.get_segmented_objects();
@@ -175,7 +175,6 @@ main (int argc, char ** argv)
     int k = 0;
     uint32_t idx_v = 0; //index of the object to work with 
     cv::namedWindow("Segmented Results", CV_WINDOW_AUTOSIZE); //create a window with the name "MyWindow"
-    int n_obj = 0;
     while( (k != 27 && k != 1048603) && idx_v < seg_objs.size() && idx_v >= 0) //while it ESC is not pressed 
     {
       if(seg_objs[idx_v].object_cloud.points.size() > 400)
@@ -216,7 +215,7 @@ main (int argc, char ** argv)
         cv::imshow("Segmented Results", img); //display the image which is stored in the 'img' in the "MyWindow" window
 
         k = cv::waitKey(0);
-        std::cout << "Key code: " << k << std::endl;
+        std::cout << "Object: " << idx_v << std::endl;
       }
 
       if( k == 65363 || k == 0 || k == 1113939) // right arrow

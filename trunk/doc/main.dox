@@ -2,9 +2,15 @@
 
   \section Introduction 
 
+  This library detects objects that stand on a table in a given point cloud. 
+  It also include a structure to define all the parameters used by the alrogithm in
+  a compact way. 
+
   \subsection Pre-Requisites
 
   This package requires of the following libraries and packages
+   - <A href="http://pointclouds.org/">PCL</A>, open project for 2D/3D image and point cloud processing.
+   - <A href="http://opencv.org/">OpenCV</A>,  open source computer vision and machine learning software library (this only for the example).
 	 - <A href="http://www.cmake.org">cmake</A>, a cross-platform build system.
 	 - <A href="http://www.doxygen.org">doxygen</a> and 
 	   <A href="http://www.graphviz.org">graphviz</a> to generate the documentation.
