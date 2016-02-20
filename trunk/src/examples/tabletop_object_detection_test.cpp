@@ -72,7 +72,7 @@ main (int argc, char ** argv)
 
   // parameters for the LCCP segmentation
   TableTop_Object_Detection seg;
-  tableTop_object_detection_parameters opt = seg.get_default_parameters();
+  tableTop_object_detection_parameters opt;
 
   // ------------------- parsing the inputs ----------------------------     
   //--------------------------------------------------------------------

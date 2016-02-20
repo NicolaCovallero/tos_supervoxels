@@ -39,30 +39,66 @@ struct Object
 };
 #endif
 
-/*! \struct
-    * \brief Group together all the parameters for the algorithm it uses.  
+/*! \brief Class to manage all togheter the parameters of the tabletop_object_detection algorithm
+     Class to group together all the parameters for the algorithm.
+     This class is thought to be used when a program has to parse several inputs to set the parameters.  
 */
-struct tableTop_object_detection_parameters
+class tableTop_object_detection_parameters
 {
-  //supervoxels parameters 
-  bool disable_transform;/**< value of disable_transform for supervoxel algorithm*/
-  double voxel_resolution; /**< value of voxel_resolution for supervoxel algorithm*/
-  double seed_resolution; /**< value of seed_resolution for supervoxel algorithm*/
-  double color_importance;/**< value of color_importance for supervoxel algorithm*/
-  double spatial_importance;/**< value of spatial_importance for supervoxel algorithm*/
-  double normal_importance;/**< value of normal_importance for supervoxel algorithm*/
+  protected:
+    // -------- Default Parameters --------
+    // supervoxels parameters 
+    static const bool DISABLE_TRANSFORM = false; /**< default value of disable_transform for supervoxel algorithm*/
+    static const double VOXEL_RESOLUTION = 0.0075f;/**< default value of voxel_resolution for supervoxel algorithm*/
+    static const double SEED_RESOLUTION = 0.03f; /**< default value of seed_resolution for supervoxel algorithm*/
+    static const double COLOR_IMPORTANCE = 0.0f;/**< default value of color_importance for supervoxel algorithm*/
+    static const double SPATIAL_IMPORTANCE = 1.0f;/**< default value of spatial_importance for supervoxel algorithm*/
+    static const double NORMAL_IMPORTANCE = 4.0f;/**< default value of normal_importance for supervoxel algorithm*/
 
-  // LCCPSegmentation parameters
-  double concavity_tolerance_threshold;/**< value of concavity_tolerance_threshold for supervoxel algorithm*/
-  double smoothness_threshold;/**< value of smoothness_threshold for supervoxel algorithm*/
-  int min_segment_size;/**< value of min_segment_size for supervoxel algorithm*/
-  bool use_extended_convexity;/**< value of use_extended_convexity for supervoxel algorithm*/
-  bool use_sanity_criterion;/**< value of use_sanity_criterion for supervoxel algorithm*/
-      
-  // other parameters    
-  double zmin; /**< Minimum distance orthogonal to the table plane to be considered as a tabletop point */
-  double zmax; /**< Maximum distance orthogonal to the table plane to be considered as a tabletop point */    
-  int th_points; /**< threshold of minimum point required to consider a cluster as valid */
+    // LCCPSegmentation parameters
+    static const double CONCAVITY_TOLERANCE_THRESHOLD = 10;/**< default value of concavity_tolerance_threshold for lccp algorithm*/
+    static const double SMOOTHNESS_THRESHOLD = 0.1f;/**< default value of smoothness_threshold for lccp algorithm*/
+    static const int MIN_SEGMENT_SIZE = 3;/**< default value of min_segment_size for lccp algorithm*/
+    static const bool USE_EXTENDED_CONVEXITY = false;/**< default value of use_extended_convexity for lccp algorithm*/
+    static const bool USE_SANITY_CRITERION = true;/**< default value of use_sanity_criterion for lccp algorithm*/
+        
+        // Others parameters
+    static const double ZMIN = 0.02;/**<  Default value of the minimum distance for object detection on the table - used inside detectedObjectsTable() */
+    static const double ZMAX = 2.; /**<  Default value of the maxmimum distance for object detection on the table - used inside detectedObjectsTable() */
+    static const int TH_POINTS = 400; /**< Default value of the threshold of minimum points required to consider a cluster as valid */
+    //-------------------
+
+  public:
+    //supervoxels parameters 
+    bool disable_transform;/**< value of disable_transform for supervoxel algorithm*/
+    double voxel_resolution; /**< value of voxel_resolution for supervoxel algorithm*/
+    double seed_resolution; /**< value of seed_resolution for supervoxel algorithm*/
+    double color_importance;/**< value of color_importance for supervoxel algorithm*/
+    double spatial_importance;/**< value of spatial_importance for supervoxel algorithm*/
+    double normal_importance;/**< value of normal_importance for supervoxel algorithm*/
+
+    // LCCPSegmentation parameters
+    double concavity_tolerance_threshold;/**< value of concavity_tolerance_threshold for supervoxel algorithm*/
+    double smoothness_threshold;/**< value of smoothness_threshold for supervoxel algorithm*/
+    int min_segment_size;/**< value of min_segment_size for supervoxel algorithm*/
+    bool use_extended_convexity;/**< value of use_extended_convexity for supervoxel algorithm*/
+    bool use_sanity_criterion;/**< value of use_sanity_criterion for supervoxel algorithm*/
+        
+    // other parameters    
+    double zmin; /**< Minimum distance orthogonal to the table plane to be considered as a tabletop point */
+    double zmax; /**< Maximum distance orthogonal to the table plane to be considered as a tabletop point */    
+    int th_points; /**< threshold of minimum point required to consider a cluster as valid */
+
+    /*! \brief Constructor
+    *   Sets all the parameters to a default value
+    */
+    tableTop_object_detection_parameters();
+
+    /*! \brief Destructor
+    *
+    */
+    ~tableTop_object_detection_parameters();
+
 }; 
 
 /**
@@ -87,7 +123,6 @@ struct tableTop_object_detection_parameters
 * std::vector<pcl::PointCloud<pcl::PointXYZRGBA> > objects = seg.get_segmented_objects_simple();  
 * \endcode
 */
-
 class TableTop_Object_Detection
 {
   protected:
