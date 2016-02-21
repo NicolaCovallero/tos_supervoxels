@@ -35,7 +35,7 @@ typedef pcl::LCCPSegmentation<pcl::PointXYZRGBA>::SupervoxelAdjacencyList SuperV
 struct Object
 {
   pcl::PointCloud<pcl::PointXYZRGBA> object_cloud;
-  int label;
+  int label; /**< label assigned by the lccp algorithm*/
 };
 #endif
 
@@ -48,7 +48,7 @@ class tableTop_object_detection_parameters
   protected:
     // -------- Default Parameters --------
     // supervoxels parameters 
-    static const bool DISABLE_TRANSFORM = false; /**< default value of disable_transform for supervoxel algorithm*/
+    static const bool DISABLE_TRANSFORM = true; /**< default value of disable_transform for supervoxel algorithm*/
     static const double VOXEL_RESOLUTION = 0.0075f;/**< default value of voxel_resolution for supervoxel algorithm*/
     static const double SEED_RESOLUTION = 0.03f; /**< default value of seed_resolution for supervoxel algorithm*/
     static const double COLOR_IMPORTANCE = 0.0f;/**< default value of color_importance for supervoxel algorithm*/
@@ -129,7 +129,7 @@ class TableTop_Object_Detection
 
     // -------- Default Parameters --------
     // supervoxels parameters 
-    static const bool DISABLE_TRANSFORM = false; /**< default value of disable_transform for supervoxel algorithm*/
+    static const bool DISABLE_TRANSFORM = true; /**< default value of disable_transform for supervoxel algorithm*/
     static const double VOXEL_RESOLUTION = 0.0075f;/**< default value of voxel_resolution for supervoxel algorithm*/
     static const double SEED_RESOLUTION = 0.03f; /**< default value of seed_resolution for supervoxel algorithm*/
     static const double COLOR_IMPORTANCE = 0.0f;/**< default value of color_importance for supervoxel algorithm*/

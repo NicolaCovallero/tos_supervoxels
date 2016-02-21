@@ -71,7 +71,6 @@ main (int argc, char ** argv)
    }
 
   // parameters for the LCCP segmentation
-  TableTop_Object_Detection seg;
   tableTop_object_detection_parameters opt;
 
   // ------------------- parsing the inputs ----------------------------     
@@ -104,9 +103,10 @@ main (int argc, char ** argv)
     return (1);
   }
   //----------------------------------------
-  //TableTop_Object_Detection segLCCP;
+  TableTop_Object_Detection seg;
   std::vector<Object> seg_objs; //("seg_objs" stands for "segmented objects") 
   seg.init(*cloud,opt);
+  //seg.init(*cloud);
   seg.print_parameters();
   seg.segment();
   seg_objs = seg.get_segmented_objects();
@@ -120,7 +120,7 @@ main (int argc, char ** argv)
   
   // show super voxels with normals and adiacency map 
   bool show_adjacency_map = true;
-  bool show_super_voxel_normals = true;
+  bool show_super_voxel_normals = false;
   seg.show_super_voxels(viewer,show_adjacency_map,show_super_voxel_normals);  
   
   std::cout << "Press 'n' to show the segmented objects\n";
@@ -165,6 +165,8 @@ main (int argc, char ** argv)
     cv::imshow("Original", img_orignal); //display the image which is stored in the 'img' in the "MyWindow" window
     std::cout << "You are now viewing the RGB image (recovered by the point cloud)."
               << " Press whatever key to go further.";
+    cv::imwrite( "./original.jpg", img_orignal );
+
     cv::waitKey(0);
 
     // displaying in the RGB image what are the pixels of the rgb image related to the segmented objects
@@ -217,6 +219,10 @@ main (int argc, char ** argv)
 
         cv::imshow("Segmented Results", img); //display the image which is stored in the 'img' in the "MyWindow" window
         std::cout << "Object: " << idx_v + 1 << " of " << seg_objs.size() << " objects." << std::endl;
+        
+        std::stringstream ss;
+        ss << "img" << idx_v << ".jpg";
+        cv::imwrite( ss.str(), img );
         k = cv::waitKey(0);
       }
 
