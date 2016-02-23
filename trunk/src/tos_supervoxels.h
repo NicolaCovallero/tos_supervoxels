@@ -39,11 +39,11 @@ struct Object
 };
 #endif
 
-/*! \brief Class to manage all togheter the parameters of the tabletop_object_detection algorithm
+/*! \brief Class to manage all togheter the parameters of the tos_supervoxels algorithm
      Class to group together all the parameters for the algorithm.
      This class is thought to be used when a program has to parse several inputs to set the parameters.  
 */
-class tableTop_object_detection_parameters
+class tos_supervoxels_parameters
 {
   protected:
     // -------- Default Parameters --------
@@ -92,12 +92,12 @@ class tableTop_object_detection_parameters
     /*! \brief Constructor
     *   Sets all the parameters to a default value
     */
-    tableTop_object_detection_parameters();
+    tos_supervoxels_parameters();
 
     /*! \brief Destructor
     *
     */
-    ~tableTop_object_detection_parameters();
+    ~tos_supervoxels_parameters();
 
 }; 
 
@@ -113,7 +113,7 @@ class tableTop_object_detection_parameters
 *
 * How to use:
 * \code
-* TableTop_Object_Detection seg;
+* tos_supervoxels seg;
 * seg(cloud); //not pointer
 * seg.segment();
 * std::vector<Object> objects = seg.get_segmented_objects(); 
@@ -123,7 +123,7 @@ class tableTop_object_detection_parameters
 * std::vector<pcl::PointCloud<pcl::PointXYZRGBA> > objects = seg.get_segmented_objects_simple();  
 * \endcode
 */
-class TableTop_Object_Detection
+class tos_supervoxels
 {
   protected:
 
@@ -206,17 +206,17 @@ class TableTop_Object_Detection
 
     /*! \brief Set all the parameters of the algorithm accordingly to the one given to input   
     */
-    void set_parameters(tableTop_object_detection_parameters & opt);
+    void set_parameters(tos_supervoxels_parameters & opt);
 
   public:		
 
     /*! \brief Class costructor
     */
-    TableTop_Object_Detection();
+    tos_supervoxels();
 
     /*! \brief class destructor
     */
-    ~TableTop_Object_Detection();
+    ~tos_supervoxels();
 
     /*! \brief Class initializer
     *
@@ -224,7 +224,7 @@ class TableTop_Object_Detection
     * \param opt parameters for the algorithm 
     */
     void init(pcl::PointCloud<pcl::PointXYZRGBA> input_cloud,
-              tableTop_object_detection_parameters &opt);
+              tos_supervoxels_parameters &opt);
     
     /*! \brief Class initializer, with default parameters
     *
@@ -239,7 +239,7 @@ class TableTop_Object_Detection
 
     /*! \brief get the default parameters of the algorithm
     */  
-    tableTop_object_detection_parameters get_default_parameters(); 
+    tos_supervoxels_parameters get_default_parameters(); 
 
     /*! \brief Detect and segment the objects on the table
     */

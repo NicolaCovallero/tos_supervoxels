@@ -8,6 +8,6 @@ IF (PCL_FOUND)
 ENDIF (PCL_FOUND)
 
 # create an example application
-ADD_EXECUTABLE(tabletop_object_detection_test tabletop_object_detection_test.cpp)
+ADD_EXECUTABLE(tos_supervoxels_test tos_supervoxels_test.cpp)
 # link necessary libraries
-TARGET_LINK_LIBRARIES(tabletop_object_detection_test tabletop_object_detection ${PCL_LIBRARIES} ${OpenCV_LIBS})
+TARGET_LINK_LIBRARIES(tos_supervoxels_test tos_supervoxels ${PCL_LIBRARIES} ${OpenCV_LIBS})

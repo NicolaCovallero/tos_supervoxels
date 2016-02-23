@@ -2,7 +2,7 @@
 \example tableTop_object_segmentation_test.cpp
 
 \b Description: 
-This program tests the tableTop_object_segmentation Library API serving it as a test.
+This program tests the tos_supervoxels Library API serving it as a test.
 The table must be the bigger plane in the point cloud.
 It also shows how to retrieve the objects' points in the RGB image. The RGB image is built 
 from the organized input cloud. 
@@ -13,16 +13,16 @@ $ ./bin/tableTop_objects_segmentation_test
 \endcode
 to see the help with all the options you can use
 \code
-$  ./bin/tableTop_objects_segmentation_test ./cloud.pcd 
+$  ./bin/tos_supervoxels_test ./cloud.pcd 
 \endcode
 to segment the tabletop objects in the point cloud "cloud.pcd"
 \code
-$ ./bin/tableTop_objects_segmentation_test ./cloud.pcd -smooth 5 -ct 7 
+$ ./bin/tos_supervoxels_test ./cloud.pcd -smooth 5 -ct 7 
 \endcode
 To segment changing some parameters
 
 */
-#include "tabletop_object_detection.h"
+#include "tos_supervoxels.h"
 
 #include <pcl/visualization/pcl_visualizer.h>
 #include <pcl/console/parse.h>
@@ -71,7 +71,7 @@ main (int argc, char ** argv)
    }
 
   // parameters for the LCCP segmentation
-  tableTop_object_detection_parameters opt;
+  tos_supervoxels_parameters opt;
 
   // ------------------- parsing the inputs ----------------------------     
   //--------------------------------------------------------------------
@@ -103,7 +103,7 @@ main (int argc, char ** argv)
     return (1);
   }
   //----------------------------------------
-  TableTop_Object_Detection seg;
+  tos_supervoxels seg;
   std::vector<Object> seg_objs; //("seg_objs" stands for "segmented objects") 
   seg.init(*cloud,opt);
   //seg.init(*cloud);

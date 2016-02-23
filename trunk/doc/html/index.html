@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>tabletop_object_detection: tabletop_object_detection</title>
+<title>tabletop_object_detection: tos_supervoxels : Tabletop Object Segmentation based on the convexity of Supervoxels</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -37,18 +37,18 @@
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">tabletop_object_detection </div>  </div>
+<div class="title"><a class="el" href="classtos__supervoxels.html">tos_supervoxels</a> : Tabletop <a class="el" href="structObject.html">Object</a> Segmentation based on the convexity of Supervoxels </div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="Introduction"></a>
 Introduction</h1>
 <p>This library detects objects that stand on a table in a given point cloud. The algorithm is defined in the class: </p>
-<div class="fragment"><div class="line"><a class="code" href="classTableTop__Object__Detection.html">TableTop_Object_Detection</a></div>
-</div><!-- fragment --><p> It also includes a struct to define all the parameters used by the alrogithm in a compact way: </p>
-<div class="fragment"><div class="line"><a class="code" href="classtableTop__object__detection__parameters.html">tableTop_object_detection_parameters</a></div>
+<div class="fragment"><div class="line"><a class="code" href="classtos__supervoxels.html">tos_supervoxels</a></div>
+</div><!-- fragment --><p> It also includes a simple class to define all the parameters used by the alogrithm in a compact way: </p>
+<div class="fragment"><div class="line"><a class="code" href="classtos__supervoxels__parameters.html">tos_supervoxels_parameters</a></div>
 </div><!-- fragment --><p> To use it initialize before it with: </p>
-<div class="fragment"><div class="line"><a class="code" href="classTableTop__Object__Detection.html">TableTop_Object_Detection</a> segLCCP;</div>
-<div class="line"><a class="code" href="classtableTop__object__detection__parameters.html">tableTop_object_detection_parameters</a> opt = segLCCP.<a class="code" href="classTableTop__Object__Detection.html#a890c8e6be3cae5aa41b8b2ecbc3bf34a">get_default_parameters</a>();</div>
+<div class="fragment"><div class="line"><a class="code" href="classtos__supervoxels.html">tos_supervoxels</a> segLCCP;</div>
+<div class="line"><a class="code" href="classtos__supervoxels__parameters.html">tos_supervoxels_parameters</a> opt = segLCCP.<a class="code" href="classtos__supervoxels.html#a1aa263f14c3322d5aaedc123cd1e2b89">get_default_parameters</a>();</div>
 </div><!-- fragment --><p> Moreover the struct to manage the segmented objects: </p>
 <div class="fragment"><div class="line"><a class="code" href="structObject.html">Object</a></div>
 </div><!-- fragment --><dl class="section author"><dt>Author</dt><dd>: Nicola Covallero (<a href="#" onclick="location.href='mai'+'lto:'+'nic'+'ol'+'aco'+'va'+'lle'+'ro'+'92@'+'gm'+'ail'+'.c'+'om'; return false;">nicol<span style="display: none;">.nosp@m.</span>acov<span style="display: none;">.nosp@m.</span>aller<span style="display: none;">.nosp@m.</span>o92@<span style="display: none;">.nosp@m.</span>gmail<span style="display: none;">.nosp@m.</span>.com</a>)</dd></dl>
@@ -106,11 +106,11 @@ Installation</h2>
 <h1><a class="anchor" id="Customization"></a>
 Customization</h1>
 <p>To build a new application using these library, first it is necessary to locate if the library has been installed or not using the following command </p>
-<pre class="fragment">- FIND_PACKAGE(tabletop_object_detection REQUIRED)
+<pre class="fragment">- FIND_PACKAGE(tos_supervoxels REQUIRED)
 </pre><p>In the case that the package is present, it is necessary to add the header files directory to the include directory path by using </p>
-<pre class="fragment">- INCLUDE_DIRECTORIES(${tabletop_object_detection_INCLUDE_DIR})
+<pre class="fragment">- INCLUDE_DIRECTORIES(${tos_supervoxels_INCLUDE_DIR})
 </pre><p>Finally, it is also nevessary to link with the desired libraries by using the following command </p>
-<pre class="fragment">- TARGET_LINK_LIBRARIES(&lt;executable name&gt; ${tabletop_object_detection_LIBRARY})
+<pre class="fragment">- TARGET_LINK_LIBRARIES(&lt;executable name&gt; ${tos_supervoxels_LIBRARY})
 .
 </pre><h1><a class="anchor" id="License"></a>
 License</h1>
@@ -123,7 +123,7 @@ Disclaimer</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Feb 20 2016 09:55:05 for tabletop_object_detection by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Feb 23 2016 11:06:56 for tabletop_object_detection by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

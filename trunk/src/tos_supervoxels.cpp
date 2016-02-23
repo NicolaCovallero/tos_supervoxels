@@ -1,7 +1,7 @@
-#include "tabletop_object_detection.h"
+#include "tos_supervoxels.h"
 
 
-tableTop_object_detection_parameters::tableTop_object_detection_parameters()
+tos_supervoxels_parameters::tos_supervoxels_parameters()
 {
   this->disable_transform = this->DISABLE_TRANSFORM;
   this->voxel_resolution = this->VOXEL_RESOLUTION;
@@ -23,23 +23,23 @@ tableTop_object_detection_parameters::tableTop_object_detection_parameters()
   this->th_points = this->TH_POINTS;
 }
 
-tableTop_object_detection_parameters::~tableTop_object_detection_parameters()
+tos_supervoxels_parameters::~tos_supervoxels_parameters()
 {
 
 }
 
-TableTop_Object_Detection::TableTop_Object_Detection()
+tos_supervoxels::tos_supervoxels()
 {
   this->initialized = false;
 }
 
-TableTop_Object_Detection::~TableTop_Object_Detection()
+tos_supervoxels::~tos_supervoxels()
 {
   
 }
 
-void TableTop_Object_Detection::init(pcl::PointCloud<pcl::PointXYZRGBA> input_cloud,
-              tableTop_object_detection_parameters &opt)
+void tos_supervoxels::init(pcl::PointCloud<pcl::PointXYZRGBA> input_cloud,
+              tos_supervoxels_parameters &opt)
 {
   this->cloud = input_cloud.makeShared();
   this->detected_objects.resize(0);
@@ -47,7 +47,7 @@ void TableTop_Object_Detection::init(pcl::PointCloud<pcl::PointXYZRGBA> input_cl
   this->initialized = true;
 } 
  
-void TableTop_Object_Detection::init(pcl::PointCloud<pcl::PointXYZRGBA> input_cloud)
+void tos_supervoxels::init(pcl::PointCloud<pcl::PointXYZRGBA> input_cloud)
 {
   this->cloud = input_cloud.makeShared();
   this->detected_objects.resize(0);
@@ -55,7 +55,7 @@ void TableTop_Object_Detection::init(pcl::PointCloud<pcl::PointXYZRGBA> input_cl
   this->initialized = true;
 } 
 
-void TableTop_Object_Detection::reset()
+void tos_supervoxels::reset()
 {
   this->cloud->points.resize(0);
   this->detected_objects.resize(0);
@@ -67,7 +67,7 @@ void TableTop_Object_Detection::reset()
   set_default_parameters();
 }
 
-void TableTop_Object_Detection::set_parameters(tableTop_object_detection_parameters & opt)
+void tos_supervoxels::set_parameters(tos_supervoxels_parameters & opt)
 {
 
   this->disable_transform = opt.disable_transform;
@@ -91,7 +91,7 @@ void TableTop_Object_Detection::set_parameters(tableTop_object_detection_paramet
 
 }
 
-void TableTop_Object_Detection::set_default_parameters()
+void tos_supervoxels::set_default_parameters()
 {
   this->disable_transform = this->DISABLE_TRANSFORM;
   this->voxel_resolution = this->VOXEL_RESOLUTION;
@@ -118,7 +118,7 @@ void TableTop_Object_Detection::set_default_parameters()
 
 
 void
-TableTop_Object_Detection::addSupervoxelConnectionsToViewer (pcl::PointXYZRGBA &supervoxel_center,
+tos_supervoxels::addSupervoxelConnectionsToViewer (pcl::PointXYZRGBA &supervoxel_center,
                                   pcl::PointCloud<pcl::PointXYZRGBA>& adjacent_supervoxel_centers,
                                   std::string supervoxel_name,
                                   boost::shared_ptr<pcl::visualization::PCLVisualizer> & viewer)
@@ -147,7 +147,7 @@ TableTop_Object_Detection::addSupervoxelConnectionsToViewer (pcl::PointXYZRGBA &
   viewer->addModelFromPolyData (polyData,supervoxel_name);
 }
 
-void TableTop_Object_Detection::detectObjectsOnTable(pcl::PointCloud<pcl::PointXYZRGBA>::Ptr cloud, double zmin, double zmax, pcl::PointIndices::Ptr objectIndices, bool filter_input_cloud)
+void tos_supervoxels::detectObjectsOnTable(pcl::PointCloud<pcl::PointXYZRGBA>::Ptr cloud, double zmin, double zmax, pcl::PointIndices::Ptr objectIndices, bool filter_input_cloud)
 {
   // Objects for storing the point clouds.
   pcl::PointCloud<pcl::PointXYZRGBA>::Ptr plane(new pcl::PointCloud<pcl::PointXYZRGBA>);
@@ -208,11 +208,11 @@ void TableTop_Object_Detection::detectObjectsOnTable(pcl::PointCloud<pcl::PointX
   }
 }
 
-tableTop_object_detection_parameters
-TableTop_Object_Detection::get_default_parameters()
+tos_supervoxels_parameters
+tos_supervoxels::get_default_parameters()
 {
 
-  tableTop_object_detection_parameters opt;
+  tos_supervoxels_parameters opt;
 
   opt.disable_transform = this->DISABLE_TRANSFORM;
   opt.voxel_resolution = this->VOXEL_RESOLUTION;
@@ -237,13 +237,13 @@ TableTop_Object_Detection::get_default_parameters()
 }
 
 
-void TableTop_Object_Detection::segment()
+void tos_supervoxels::segment()
 {
   //float t_ini = cv::getTickCount();
 
   if(!this->initialized)
   {
-    pcl::console::print_error("[TableTop_Object_Detection] No valid input cloud given to the algorithm. The class has not beed initialized.");
+    pcl::console::print_error("[tos_supervoxels] No valid input cloud given to the algorithm. The class has not beed initialized.");
     return;
   }
 
@@ -252,7 +252,7 @@ void TableTop_Object_Detection::segment()
   //float elapsed_time_plane = (cv::getTickCount()-t_ini)/cv::getTickFrequency();
 
   if(this->seed_resolution < 0.013)
-    pcl::console::print_warn("[TableTop_Object_Detection] seed resolution very low, the segmentation could be fragmented.");
+    pcl::console::print_warn("[tos_supervoxels] seed resolution very low, the segmentation could be fragmented.");
 
   pcl::SupervoxelClustering<pcl::PointXYZRGBA> super (this->voxel_resolution, this->seed_resolution);
 
@@ -350,7 +350,7 @@ void TableTop_Object_Detection::segment()
   return;
 }
 
-void TableTop_Object_Detection::show_super_voxels(boost::shared_ptr<pcl::visualization::PCLVisualizer> & viewer,
+void tos_supervoxels::show_super_voxels(boost::shared_ptr<pcl::visualization::PCLVisualizer> & viewer,
                        bool show_adjacency_map,
                        bool show_super_voxel_normals)
 {
@@ -396,7 +396,7 @@ void TableTop_Object_Detection::show_super_voxels(boost::shared_ptr<pcl::visuali
   return;
 }
 
-void TableTop_Object_Detection::show_super_voxels(boost::shared_ptr<pcl::visualization::PCLVisualizer> & viewer)
+void tos_supervoxels::show_super_voxels(boost::shared_ptr<pcl::visualization::PCLVisualizer> & viewer)
 {
   if(this->detected_objects.size() > 0)
   {
@@ -433,7 +433,7 @@ void TableTop_Object_Detection::show_super_voxels(boost::shared_ptr<pcl::visuali
   return;
 }
 
-void TableTop_Object_Detection::show_segmented_objects(boost::shared_ptr<pcl::visualization::PCLVisualizer> & viewer)
+void tos_supervoxels::show_segmented_objects(boost::shared_ptr<pcl::visualization::PCLVisualizer> & viewer)
 {
   pcl::PointCloud<pcl::PointXYZL> objects_cloud;
 
@@ -459,7 +459,7 @@ void TableTop_Object_Detection::show_segmented_objects(boost::shared_ptr<pcl::vi
   return;
 }
 
-void TableTop_Object_Detection::clean_viewer(boost::shared_ptr<pcl::visualization::PCLVisualizer> & viewer)
+void tos_supervoxels::clean_viewer(boost::shared_ptr<pcl::visualization::PCLVisualizer> & viewer)
 {
   viewer->removePointCloud("supervoxel_cloud");
   viewer->removePointCloud("supervoxel_normals");
@@ -478,12 +478,12 @@ void TableTop_Object_Detection::clean_viewer(boost::shared_ptr<pcl::visualizatio
   return;
 }
 
-std::vector<Object> TableTop_Object_Detection::get_segmented_objects()
+std::vector<Object> tos_supervoxels::get_segmented_objects()
 {
   return this->detected_objects;
 }
 
-std::vector<pcl::PointCloud<pcl::PointXYZRGBA> > TableTop_Object_Detection::get_segmented_objects_simple()
+std::vector<pcl::PointCloud<pcl::PointXYZRGBA> > tos_supervoxels::get_segmented_objects_simple()
 {
   std::vector<pcl::PointCloud<pcl::PointXYZRGBA> > obj_vec;
   
@@ -495,9 +495,9 @@ std::vector<pcl::PointCloud<pcl::PointXYZRGBA> > TableTop_Object_Detection::get_
   return obj_vec;
 }
 
-void TableTop_Object_Detection::print_parameters()
+void tos_supervoxels::print_parameters()
 {
-  std::cout << "\nTableTop_Object_Detection parameters: \n"
+  std::cout << "\ntos_supervoxels parameters: \n"
             << "----------------- Supervoxel parameters ---------\n"
             << "disable_transform: " << (bool)this->disable_transform  << std::endl
             << "voxel_resolution: " << (double)this->voxel_resolution << std::endl 
@@ -518,140 +518,140 @@ void TableTop_Object_Detection::print_parameters()
   return;  
 }
 
-pcl::PointCloud<pcl::PointXYZRGBA>::Ptr TableTop_Object_Detection::get_input_cloud()
+pcl::PointCloud<pcl::PointXYZRGBA>::Ptr tos_supervoxels::get_input_cloud()
 {
   return this->cloud;
 }
 
-pcl::PointCloud<pcl::PointXYZL> TableTop_Object_Detection::get_labeled_voxel_cloud()
+pcl::PointCloud<pcl::PointXYZL> tos_supervoxels::get_labeled_voxel_cloud()
 {
   return *(this->labeled_voxel_cloud);
 }
 
-std::multimap<uint32_t, uint32_t> TableTop_Object_Detection::get_supervoxel_adjacency()
+std::multimap<uint32_t, uint32_t> tos_supervoxels::get_supervoxel_adjacency()
 {
   return this->supervoxel_adjacency;
 }
 
-std::map <uint32_t, pcl::Supervoxel<pcl::PointXYZRGBA>::Ptr> TableTop_Object_Detection::get_supervoxel_clusters()
+std::map <uint32_t, pcl::Supervoxel<pcl::PointXYZRGBA>::Ptr> tos_supervoxels::get_supervoxel_clusters()
 {
   return this->supervoxel_clusters;
 }
 
-pcl::PointCloud<pcl::PointNormal> TableTop_Object_Detection::get_sv_normal_cloud()
+pcl::PointCloud<pcl::PointNormal> tos_supervoxels::get_sv_normal_cloud()
 {
   return *(this->sv_normal_cloud);
 }
 
-void TableTop_Object_Detection::set_disable_transform(bool disable_transform_in)
+void tos_supervoxels::set_disable_transform(bool disable_transform_in)
 {
   this->disable_transform = disable_transform_in;
 }
-void TableTop_Object_Detection::set_voxel_resolution(double voxel_resolution_in)
+void tos_supervoxels::set_voxel_resolution(double voxel_resolution_in)
 {
   this->voxel_resolution = voxel_resolution_in;
 }
-void TableTop_Object_Detection::set_seed_resolution(double seed_resolution_in)
+void tos_supervoxels::set_seed_resolution(double seed_resolution_in)
 {
   this->seed_resolution = seed_resolution_in;
 }
-void TableTop_Object_Detection::set_color_importance(double color_importance_in)
+void tos_supervoxels::set_color_importance(double color_importance_in)
 {
   this->color_importance = color_importance_in;
 }
-void TableTop_Object_Detection::set_spatial_importance(double spatial_importance_in)
+void tos_supervoxels::set_spatial_importance(double spatial_importance_in)
 {
   this->spatial_importance = spatial_importance_in;
 }
-void TableTop_Object_Detection::set_normal_importance(double normal_importance_in)
+void tos_supervoxels::set_normal_importance(double normal_importance_in)
 {
   this->normal_importance = normal_importance_in;
 }
-void TableTop_Object_Detection::set_concavity_tolerance_threshold(double concavity_tolerance_threshold_in)
+void tos_supervoxels::set_concavity_tolerance_threshold(double concavity_tolerance_threshold_in)
 {
   this->concavity_tolerance_threshold = concavity_tolerance_threshold_in;
 }
-void TableTop_Object_Detection::set_smoothness_threshold(double smoothness_threshold_in)
+void tos_supervoxels::set_smoothness_threshold(double smoothness_threshold_in)
 {
   this->smoothness_threshold = smoothness_threshold_in;
 }
-void TableTop_Object_Detection::set_min_segment_size(int min_segment_size_in)
+void tos_supervoxels::set_min_segment_size(int min_segment_size_in)
 {
   this->min_segment_size = min_segment_size_in;
 }
-void TableTop_Object_Detection::set_use_extended_convexity(bool use_extended_convexity_in)
+void tos_supervoxels::set_use_extended_convexity(bool use_extended_convexity_in)
 {
   this->use_extended_convexity = use_extended_convexity_in;
 }
-void TableTop_Object_Detection::set_use_sanity_criterion(bool use_sanity_criterion_in)
+void tos_supervoxels::set_use_sanity_criterion(bool use_sanity_criterion_in)
 {
   this->use_sanity_criterion = use_sanity_criterion_in;
 }
-void TableTop_Object_Detection::set_zmin(double zmin_in)
+void tos_supervoxels::set_zmin(double zmin_in)
 {
   this->zmin = zmin_in;
 }
-void TableTop_Object_Detection::set_zmax(double zmax_in)
+void tos_supervoxels::set_zmax(double zmax_in)
 {
   this->zmax = zmax_in;
 }
-void TableTop_Object_Detection::set_th_points(int th_points_in)
+void tos_supervoxels::set_th_points(int th_points_in)
 {
   this->th_points = th_points_in;
 }
-bool TableTop_Object_Detection::get_disable_transform()
+bool tos_supervoxels::get_disable_transform()
 {
   return this->disable_transform;
 }
-double TableTop_Object_Detection::get_voxel_resolution()
+double tos_supervoxels::get_voxel_resolution()
 {
   return this->voxel_resolution;
 }
-double TableTop_Object_Detection::get_seed_resolution()
+double tos_supervoxels::get_seed_resolution()
 {
   return this->seed_resolution;
 }
-double TableTop_Object_Detection::get_color_importance()
+double tos_supervoxels::get_color_importance()
 {
   return this->color_importance;
 }
-double TableTop_Object_Detection::get_spatial_importance()
+double tos_supervoxels::get_spatial_importance()
 {
   return this->spatial_importance;
 }
-double TableTop_Object_Detection::get_normal_importance()
+double tos_supervoxels::get_normal_importance()
 {
   return this->normal_importance;
 }
-double TableTop_Object_Detection::get_concavity_tolerance_threshold()
+double tos_supervoxels::get_concavity_tolerance_threshold()
 {
   return this->concavity_tolerance_threshold;
 }
-double TableTop_Object_Detection::TableTop_Object_Detection::TableTop_Object_Detection::get_smoothness_threshold()
+double tos_supervoxels::tos_supervoxels::tos_supervoxels::get_smoothness_threshold()
 {
   return this->smoothness_threshold;
 }
-int TableTop_Object_Detection::TableTop_Object_Detection::get_min_segment_size()
+int tos_supervoxels::tos_supervoxels::get_min_segment_size()
 {
   return this->min_segment_size;
 }
-bool TableTop_Object_Detection::get_use_extended_convexity()
+bool tos_supervoxels::get_use_extended_convexity()
 {
   return this->use_extended_convexity;
 }
-bool TableTop_Object_Detection::get_use_sanity_criterion()
+bool tos_supervoxels::get_use_sanity_criterion()
 {
   return this->use_sanity_criterion;
 }
-double TableTop_Object_Detection::get_zmin()
+double tos_supervoxels::get_zmin()
 {
   return this->zmin;
 }
-double TableTop_Object_Detection::get_zmax()
+double tos_supervoxels::get_zmax()
 {
   return this->zmax;
 }
-int TableTop_Object_Detection::get_th_points()
+int tos_supervoxels::get_th_points()
 {
   return this->th_points;
 }

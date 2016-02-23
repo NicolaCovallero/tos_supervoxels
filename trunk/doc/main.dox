@@ -1,21 +1,21 @@
-/*! \mainpage tabletop_object_detection
+/*! \mainpage tos_supervoxels : Tabletop Object Segmentation based on the convexity of Supervoxels
 
   \section Introduction 
 
   This library detects objects that stand on a table in a given point cloud. 
   The algorithm is defined in the class:
   \code 
-  TableTop_Object_Detection
+  tos_supervoxels
   \endcode
-  It also includes a struct to define all the parameters used by the alrogithm in
+  It also includes a simple class to define all the parameters used by the alogrithm in
   a compact way:
   \code
-  tableTop_object_detection_parameters
+  tos_supervoxels_parameters
   \endcode
   To use it initialize before it with:
   \code
-  TableTop_Object_Detection segLCCP;
-  tableTop_object_detection_parameters opt = segLCCP.get_default_parameters();
+  tos_supervoxels segLCCP;
+  tos_supervoxels_parameters opt = segLCCP.get_default_parameters();
   \endcode
   Moreover the struct to manage the segmented objects:
   \code
@@ -96,16 +96,16 @@
   To build a new application using these library, first it is necessary to locate if the library
   has been installed or not using the following command
 
-      - FIND_PACKAGE(tabletop_object_detection REQUIRED)
+      - FIND_PACKAGE(tos_supervoxels REQUIRED)
 
   In the case that the package is present, it is necessary to add the header files directory to
   the include directory path by using
 
-      - INCLUDE_DIRECTORIES(${tabletop_object_detection_INCLUDE_DIR})
+      - INCLUDE_DIRECTORIES(${tos_supervoxels_INCLUDE_DIR})
 
   Finally, it is also nevessary to link with the desired libraries by using the following command
 
-      - TARGET_LINK_LIBRARIES(<executable name> ${tabletop_object_detection_LIBRARY})
+      - TARGET_LINK_LIBRARIES(<executable name> ${tos_supervoxels_LIBRARY})
       .
 
   \section License
