@@ -139,6 +139,9 @@ main (int argc, char ** argv)
 
   if(cloud->isOrganized())//if the point cloud is organized we can work with the RGB image
   {
+    std::cout << "You are now viewing the RGB image (recovered by the point cloud)."
+              << " Press whatever key to go further.";
+
     // recover the RGB IMAGE from the point cloud 
     cv::Mat img_orignal(480, 640, CV_8UC3); //create an image ( 3 channels, 8 bit image depth);
 
@@ -161,10 +164,11 @@ main (int argc, char ** argv)
       }
     }
 
+
+
     cv::namedWindow("Original", CV_WINDOW_AUTOSIZE); //create a window with the name "MyWindow"
     cv::imshow("Original", img_orignal); //display the image which is stored in the 'img' in the "MyWindow" window
-    std::cout << "You are now viewing the RGB image (recovered by the point cloud)."
-              << " Press whatever key to go further.";
+
     cv::imwrite( "./original.jpg", img_orignal );
 
     cv::waitKey(0);
