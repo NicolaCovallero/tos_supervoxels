@@ -166,105 +166,109 @@
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  <span class="keywordflow">if</span>(cloud-&gt;isOrganized())<span class="comment">//if the point cloud is organized we can work with the RGB image</span></div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  {</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="comment">// recover the RGB IMAGE from the point cloud </span></div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    cv::Mat img_orignal(480, 640, CV_8UC3); <span class="comment">//create an image ( 3 channels, 8 bit image depth);</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;You are now viewing the RGB image (recovered by the point cloud).&quot;</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;              &lt;&lt; <span class="stringliteral">&quot; Press whatever key to go further.&quot;</span>;</div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> row = 0; row &lt; img_orignal.rows; ++row)</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    {</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> c = 0; c &lt; img_orignal.cols; ++c)</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;      {             </div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        </div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        pcl::PointXYZRGBA point = (*cloud)(c,row); <span class="comment">//note: there is a transformation in the reference frame of the pclò and the image!!!!!!!!!!!!!!!!</span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        uint8_t r = (uint8_t)point.r;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        uint8_t g = (uint8_t)point.g;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        uint8_t b = (uint8_t)point.b;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     </div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                  </div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        cv::Vec3b color;<span class="comment">//vector of colors             </span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        color.val[0] = b;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        color.val[1] = g;</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        color.val[2] = r;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        img_orignal.at&lt;cv::Vec3b&gt;(row,c) = color;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;      }</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    }</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    cv::namedWindow(<span class="stringliteral">&quot;Original&quot;</span>, CV_WINDOW_AUTOSIZE); <span class="comment">//create a window with the name &quot;MyWindow&quot;</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    cv::imshow(<span class="stringliteral">&quot;Original&quot;</span>, img_orignal); <span class="comment">//display the image which is stored in the &#39;img&#39; in the &quot;MyWindow&quot; window</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;You are now viewing the RGB image (recovered by the point cloud).&quot;</span></div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;              &lt;&lt; <span class="stringliteral">&quot; Press whatever key to go further.&quot;</span>;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    cv::imwrite( <span class="stringliteral">&quot;./original.jpg&quot;</span>, img_orignal );</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    cv::waitKey(0);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="comment">// recover the RGB IMAGE from the point cloud </span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    cv::Mat img_orignal(480, 640, CV_8UC3); <span class="comment">//create an image ( 3 channels, 8 bit image depth);</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> row = 0; row &lt; img_orignal.rows; ++row)</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> c = 0; c &lt; img_orignal.cols; ++c)</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;      {             </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        pcl::PointXYZRGBA point = (*cloud)(c,row); <span class="comment">//note: there is a transformation in the reference frame of the pclò and the image!!!!!!!!!!!!!!!!</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        uint8_t r = (uint8_t)point.r;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        uint8_t g = (uint8_t)point.g;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        uint8_t b = (uint8_t)point.b;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                  </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        cv::Vec3b color;<span class="comment">//vector of colors             </span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        color.val[0] = b;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        color.val[1] = g;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        color.val[2] = r;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        img_orignal.at&lt;cv::Vec3b&gt;(row,c) = color;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;      }</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    }</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    cv::namedWindow(<span class="stringliteral">&quot;Original&quot;</span>, CV_WINDOW_AUTOSIZE); <span class="comment">//create a window with the name &quot;MyWindow&quot;</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    cv::imshow(<span class="stringliteral">&quot;Original&quot;</span>, img_orignal); <span class="comment">//display the image which is stored in the &#39;img&#39; in the &quot;MyWindow&quot; window</span></div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="comment">// displaying in the RGB image what are the pixels of the rgb image related to the segmented objects</span></div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;\nYou are now visualizing the results of the segmentation in the 2D rgb image.&quot;</span></div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;              &lt;&lt; <span class="stringliteral">&quot; Press right arrow to visualize the next object, the left one to visualize the previous one, and ESC to exit.\n&quot;</span>;           </div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    </div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="comment">// to retireve the points in the RGB image we have to use a KdTree to get the points of the object</span></div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="comment">// in the input cloud              </span></div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    pcl::KdTreeFLANN&lt;pcl::PointXYZRGBA&gt; kdtree;</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    kdtree.setInputCloud (cloud);</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="keywordtype">int</span> k = 0;</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    uint32_t idx_v = 0; <span class="comment">//index of the object to work with </span></div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    cv::namedWindow(<span class="stringliteral">&quot;Segmented Results&quot;</span>, CV_WINDOW_AUTOSIZE); <span class="comment">//create a window with the name &quot;MyWindow&quot;</span></div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="keywordflow">while</span>( (k != 27 &amp;&amp; k != 1048603) &amp;&amp; idx_v &lt; seg_objs.size() &amp;&amp; idx_v &gt;= 0) <span class="comment">//while it ESC is not pressed </span></div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    {</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;      <span class="keywordflow">if</span>(seg_objs[idx_v].object_cloud.points.size() &gt; 400)</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;      {</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        cv::Mat img(480, 640, CV_8UC3,cv::Scalar(255,255,255)); <span class="comment">//create an image ( 3 channels, 8 bit image depth);</span></div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        <span class="comment">//fill the matrix &quot;img&quot; with only the points of the current object</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; seg_objs[idx_v].object_cloud.points.size(); ++i)</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        {</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;          pcl::PointXYZRGBA searchPoint;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;          searchPoint.x = seg_objs[idx_v].object_cloud.points[i].x;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;          searchPoint.y = seg_objs[idx_v].object_cloud.points[i].y;</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;          searchPoint.z = seg_objs[idx_v].object_cloud.points[i].z;</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;          std::vector&lt;int&gt; pointIdxNKNSearch(1);</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;          std::vector&lt;float&gt; pointNKNSquaredDistance(1);</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;          <span class="keywordflow">if</span> ( kdtree.nearestKSearch (searchPoint, 1, pointIdxNKNSearch, pointNKNSquaredDistance) &gt; 0 )</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;          {</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            pcl::PointXYZRGBA point = cloud-&gt;points[pointIdxNKNSearch[0]];         </div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    cv::imwrite( <span class="stringliteral">&quot;./original.jpg&quot;</span>, img_orignal );</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    cv::waitKey(0);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="comment">// displaying in the RGB image what are the pixels of the rgb image related to the segmented objects</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;\nYou are now visualizing the results of the segmentation in the 2D rgb image.&quot;</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;              &lt;&lt; <span class="stringliteral">&quot; Press right arrow to visualize the next object, the left one to visualize the previous one, and ESC to exit.\n&quot;</span>;           </div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="comment">// to retireve the points in the RGB image we have to use a KdTree to get the points of the object</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="comment">// in the input cloud              </span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    pcl::KdTreeFLANN&lt;pcl::PointXYZRGBA&gt; kdtree;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    kdtree.setInputCloud (cloud);</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keywordtype">int</span> k = 0;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    uint32_t idx_v = 0; <span class="comment">//index of the object to work with </span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    cv::namedWindow(<span class="stringliteral">&quot;Segmented Results&quot;</span>, CV_WINDOW_AUTOSIZE); <span class="comment">//create a window with the name &quot;MyWindow&quot;</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordflow">while</span>( (k != 27 &amp;&amp; k != 1048603) &amp;&amp; idx_v &lt; seg_objs.size() &amp;&amp; idx_v &gt;= 0) <span class="comment">//while it ESC is not pressed </span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    {</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;      <span class="keywordflow">if</span>(seg_objs[idx_v].object_cloud.points.size() &gt; 400)</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;      {</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        cv::Mat img(480, 640, CV_8UC3,cv::Scalar(255,255,255)); <span class="comment">//create an image ( 3 channels, 8 bit image depth);</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <span class="comment">//fill the matrix &quot;img&quot; with only the points of the current object</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; seg_objs[idx_v].object_cloud.points.size(); ++i)</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        {</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;          pcl::PointXYZRGBA searchPoint;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;          searchPoint.x = seg_objs[idx_v].object_cloud.points[i].x;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;          searchPoint.y = seg_objs[idx_v].object_cloud.points[i].y;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;          searchPoint.z = seg_objs[idx_v].object_cloud.points[i].z;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;          std::vector&lt;int&gt; pointIdxNKNSearch(1);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;          std::vector&lt;float&gt; pointNKNSquaredDistance(1);</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            uint8_t r = (uint8_t)point.r;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            uint8_t g = (uint8_t)point.g;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     </div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            uint8_t b = (uint8_t)point.b;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     </div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                    </div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            cv::Vec3b color; <span class="comment">//vector of colors             </span></div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            color.val[0] = b;</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            color.val[1] = g;</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            color.val[2] = r;</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            <span class="keywordtype">float</span> x,y;</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            y = (<span class="keywordtype">int</span>)(pointIdxNKNSearch[0]/cloud-&gt;width);</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            x = pointIdxNKNSearch[0] - y*cloud-&gt;width;</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            img.at&lt;cv::Vec3b&gt;(y,x) = color; <span class="comment">//transformation coordinates</span></div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;          }</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        }</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        cv::imshow(<span class="stringliteral">&quot;Segmented Results&quot;</span>, img); <span class="comment">//display the image which is stored in the &#39;img&#39; in the &quot;MyWindow&quot; window</span></div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Object: &quot;</span> &lt;&lt; idx_v + 1 &lt;&lt; <span class="stringliteral">&quot; of &quot;</span> &lt;&lt; seg_objs.size() &lt;&lt; <span class="stringliteral">&quot; objects.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        </div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        std::stringstream ss;</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        ss &lt;&lt; <span class="stringliteral">&quot;img&quot;</span> &lt;&lt; idx_v &lt;&lt; <span class="stringliteral">&quot;.jpg&quot;</span>;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        cv::imwrite( ss.str(), img );</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        k = cv::waitKey(0);</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;      }</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;      <span class="keywordflow">if</span>( k == 65363 || k == 0 || k == 1113939) <span class="comment">// right arrow</span></div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        idx_v++;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;      <span class="keywordflow">if</span>( k == 65361 || k == 1113937) <span class="comment">// left arrow</span></div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        idx_v &gt; 0 ? idx_v-- : idx_v = 0;</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    }</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;  }</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;  <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;The point cloud is not organized&quot;</span>;</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;  <span class="keywordflow">return</span> (0);</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;}</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;          <span class="keywordflow">if</span> ( kdtree.nearestKSearch (searchPoint, 1, pointIdxNKNSearch, pointNKNSquaredDistance) &gt; 0 )</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;          {</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            pcl::PointXYZRGBA point = cloud-&gt;points[pointIdxNKNSearch[0]];         </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            uint8_t r = (uint8_t)point.r;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            uint8_t g = (uint8_t)point.g;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            uint8_t b = (uint8_t)point.b;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     </div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                    </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            cv::Vec3b color; <span class="comment">//vector of colors             </span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            color.val[0] = b;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            color.val[1] = g;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            color.val[2] = r;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            <span class="keywordtype">float</span> x,y;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            y = (<span class="keywordtype">int</span>)(pointIdxNKNSearch[0]/cloud-&gt;width);</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            x = pointIdxNKNSearch[0] - y*cloud-&gt;width;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            img.at&lt;cv::Vec3b&gt;(y,x) = color; <span class="comment">//transformation coordinates</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;          }</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        }</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        cv::imshow(<span class="stringliteral">&quot;Segmented Results&quot;</span>, img); <span class="comment">//display the image which is stored in the &#39;img&#39; in the &quot;MyWindow&quot; window</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Object: &quot;</span> &lt;&lt; idx_v + 1 &lt;&lt; <span class="stringliteral">&quot; of &quot;</span> &lt;&lt; seg_objs.size() &lt;&lt; <span class="stringliteral">&quot; objects.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        </div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        std::stringstream ss;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        ss &lt;&lt; <span class="stringliteral">&quot;img&quot;</span> &lt;&lt; idx_v &lt;&lt; <span class="stringliteral">&quot;.jpg&quot;</span>;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        cv::imwrite( ss.str(), img );</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        k = cv::waitKey(0);</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;      }</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;      <span class="keywordflow">if</span>( k == 65363 || k == 0 || k == 1113939) <span class="comment">// right arrow</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        idx_v++;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;      <span class="keywordflow">if</span>( k == 65361 || k == 1113937) <span class="comment">// left arrow</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        idx_v &gt; 0 ? idx_v-- : idx_v = 0;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    }</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;  }</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;  <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;The point cloud is not organized&quot;</span>;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;  <span class="keywordflow">return</span> (0);</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;}</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;</div>
 <div class="ttc" id="classtos__supervoxels__parameters_html_ab859bd58bf8be6ced2149da00b46377d"><div class="ttname"><a href="classtos__supervoxels__parameters.html#ab859bd58bf8be6ced2149da00b46377d">tos_supervoxels_parameters::zmin</a></div><div class="ttdeci">double zmin</div><div class="ttdef"><b>Definition:</b> <a href="tos__supervoxels_8h_source.html#l00088">tos_supervoxels.h:88</a></div></div>
 <div class="ttc" id="classtos__supervoxels__parameters_html_aadaf6239b4dfa5e85ab5f03a7171e68b"><div class="ttname"><a href="classtos__supervoxels__parameters.html#aadaf6239b4dfa5e85ab5f03a7171e68b">tos_supervoxels_parameters::voxel_resolution</a></div><div class="ttdeci">double voxel_resolution</div><div class="ttdef"><b>Definition:</b> <a href="tos__supervoxels_8h_source.html#l00074">tos_supervoxels.h:74</a></div></div>
 <div class="ttc" id="classtos__supervoxels__parameters_html_af454742145a148274b0f22384d267047"><div class="ttname"><a href="classtos__supervoxels__parameters.html#af454742145a148274b0f22384d267047">tos_supervoxels_parameters::concavity_tolerance_threshold</a></div><div class="ttdeci">double concavity_tolerance_threshold</div><div class="ttdef"><b>Definition:</b> <a href="tos__supervoxels_8h_source.html#l00081">tos_supervoxels.h:81</a></div></div>
@@ -291,7 +295,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Feb 23 2016 11:06:56 for tabletop_object_detection by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 25 2016 12:12:06 for tabletop_object_detection by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
