@@ -1,5 +1,5 @@
 Copyright (C) 2009-2010 Institut de Robòtica i Informàtica Industrial, CSIC-UPC.
-Author nicola (ncovallero@iri.upc.edu)
+Author Nicola Covallero (ncovallero@iri.upc.edu)
 All rights reserved.
 
 This file is part of tos_supervoxels library
