@@ -110,6 +110,10 @@ main (int argc, char ** argv)
   seg.print_parameters();
   seg.segment();
   seg_objs = seg.get_segmented_objects();
+  /* you could eventually use the following:
+  std::vector<pcl::PointCloud<pcl::PointXYZRGBA> > segmented_objs;
+  segmented_objs = seg.get_segmented_objects_simple();
+  */
   std::cout << "\nDetected " << seg_objs.size() << " objects.\n\n";
   //----------------------------------------
 
