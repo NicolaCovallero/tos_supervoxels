@@ -129,7 +129,7 @@ main (int argc, char ** argv)
   seg.clean_viewer(viewer);
 
   // show the segmented objects, the result of the segmentation
-  std::cout << "\nClose the visualzier to go to the next step\n";
+  std::cout << "\nClose the visualizer to go to the next step\n";
   seg.show_segmented_objects(viewer);
   while (!viewer->wasStopped ()) // the pressed variable is just usfull only for this first while (bad programming)
       viewer->spinOnce (100);

@@ -15,7 +15,7 @@
   To use it initialize before it with:
   \code
   tos_supervoxels segLCCP;
-  tos_supervoxels_parameters opt = segLCCP.get_default_parameters();
+  tos_supervoxels_parameters opt;
   \endcode
   Moreover the struct to manage the segmented objects:
   \code
