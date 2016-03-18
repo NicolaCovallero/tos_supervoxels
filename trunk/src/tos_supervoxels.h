@@ -17,9 +17,6 @@
 #include <pcl/segmentation/lccp_segmentation.h>
 #include <vtkPolyLine.h>
 
-#include <pcl/sample_consensus/method_types.h>
-#include <pcl/sample_consensus/model_types.h>
-#include <pcl/segmentation/sac_segmentation.h>
 #include <pcl/filters/extract_indices.h>
 #include <pcl/surface/convex_hull.h>
 #include <pcl/segmentation/extract_polygonal_prism_data.h>
@@ -156,6 +153,9 @@ class tos_supervoxels
     pcl::PointCloud<pcl::PointXYZL>::Ptr labeled_voxel_cloud;
     std::map <uint32_t, pcl::Supervoxel<pcl::PointXYZRGBA>::Ptr > supervoxel_clusters;
     pcl::PointCloud<pcl::PointNormal>::Ptr sv_normal_cloud;
+
+    pcl::ModelCoefficients plane_coefficients;/**< coefficients of the table plane */
+
 
     /*! \brief shows supervoxel connections to viewer thorugh poly data shapes  
     *
@@ -337,6 +337,8 @@ class tos_supervoxels
     double get_zmin();
     double get_zmax();
     int get_th_points();
+
+    pcl::ModelCoefficients get_plane_coefficients();
 
 };
 
