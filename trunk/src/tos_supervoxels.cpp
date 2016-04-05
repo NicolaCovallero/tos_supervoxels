@@ -154,7 +154,6 @@ void tos_supervoxels::detectObjectsOnTable(pcl::PointCloud<pcl::PointXYZRGBA>::P
   pcl::PointCloud<pcl::PointXYZRGBA>::Ptr convexHull(new pcl::PointCloud<pcl::PointXYZRGBA>);
  
   // Get the plane model, if present.
-  pcl::ModelCoefficients::Ptr coefficients(new pcl::ModelCoefficients);
   pcl::SACSegmentation<pcl::PointXYZRGBA> segmentation;
   segmentation.setInputCloud(cloud);
   segmentation.setModelType(pcl::SACMODEL_PLANE);
@@ -162,7 +161,7 @@ void tos_supervoxels::detectObjectsOnTable(pcl::PointCloud<pcl::PointXYZRGBA>::P
   segmentation.setDistanceThreshold(0.01);
   segmentation.setOptimizeCoefficients(true);
   pcl::PointIndices::Ptr planeIndices(new pcl::PointIndices);
-  segmentation.segment(*planeIndices, *coefficients);
+  segmentation.segment(*planeIndices, this->plane_coefficients);
 
   if (planeIndices->indices.size() == 0)
     std::cout << "Could not find a plane in the scene." << std::endl;
@@ -654,4 +653,8 @@ double tos_supervoxels::get_zmax()
 int tos_supervoxels::get_th_points()
 {
   return this->th_points;
+}
+pcl::ModelCoefficients tos_supervoxels::get_plane_coefficients()
+{
+  return this->plane_coefficients;
 }
