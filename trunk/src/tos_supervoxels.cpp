@@ -41,6 +41,9 @@ tos_supervoxels::~tos_supervoxels()
 void tos_supervoxels::init(pcl::PointCloud<pcl::PointXYZRGBA> input_cloud,
               tos_supervoxels_parameters &opt)
 {
+  // pcl::PointCloud<pcl::PointXYZRGBA> cloud_copied;
+  // pcl::copyPointCloud(input_cloud, cloud_copied); 
+  // this->cloud = cloud_copied.makeShared();
   this->cloud = input_cloud.makeShared();
   this->detected_objects.resize(0);
   set_parameters(opt);
