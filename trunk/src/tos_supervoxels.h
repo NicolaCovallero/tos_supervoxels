@@ -232,7 +232,7 @@ class tos_supervoxels
     */
     void init(pcl::PointCloud<pcl::PointXYZRGBA> input_cloud);
 
-    /*! \brief reset all the publis members 
+    /*! \brief reset all the public members 
     * reset all the public members.
     */
     void reset();
