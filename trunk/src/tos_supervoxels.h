@@ -242,8 +242,9 @@ class tos_supervoxels
     tos_supervoxels_parameters get_default_parameters(); 
 
     /*! \brief Detect and segment the objects on the table
+    * \details It returns true if there is at least one object on the table, at least one segmented object.
     */
-    void segment();
+    bool segment();
 
     /*! \brief shows in the viewer the supervoxels
     * 

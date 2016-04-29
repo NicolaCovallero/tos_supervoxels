@@ -239,14 +239,14 @@ tos_supervoxels::get_default_parameters()
 }
 
 
-void tos_supervoxels::segment()
+bool tos_supervoxels::segment()
 {
   //float t_ini = cv::getTickCount();
 
   if(!this->initialized)
   {
     pcl::console::print_error("[tos_supervoxels] No valid input cloud given to the algorithm. The class has not beed initialized.");
-    return;
+    return false;
   }
 
   pcl::PointIndices::Ptr obj_idx (new pcl::PointIndices());
@@ -257,6 +257,17 @@ void tos_supervoxels::segment()
     pcl::console::print_warn("[tos_supervoxels] seed resolution very low, the segmentation could be fragmented.");
 
   pcl::SupervoxelClustering<pcl::PointXYZRGBA> super (this->voxel_resolution, this->seed_resolution);
+
+
+  // resize 
+  detected_objects.resize(0); // maybe it is useless
+
+  // Checking for objects on the table
+  if(this->cloud->points.size() == 0)
+  {
+    pcl::console::print_warn("No objects on the table\n");
+    return false;
+  }
 
   super.setInputCloud (this->cloud);
 
@@ -349,7 +360,7 @@ void tos_supervoxels::segment()
   //std::cout << "elapsed_time (segmentation and postprocessing): " << elapsed_time << "\nelapsed_time of LCCP segmentation: " << elapsed_time_seg   <<  std::endl;
   //std::cout << "elapsed_time plane estimation: " << elapsed_time_plane << std::endl;
 
-  return;
+  return true;
 }
 
 void tos_supervoxels::show_super_voxels(boost::shared_ptr<pcl::visualization::PCLVisualizer> & viewer,

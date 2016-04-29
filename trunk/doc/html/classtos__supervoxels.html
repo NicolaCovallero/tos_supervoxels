@@ -73,16 +73,15 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4963a76d8759c326b3639967b23ff984"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05e74b73d24d578914be111dca9a578d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a05e74b73d24d578914be111dca9a578d"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtos__supervoxels.html#a05e74b73d24d578914be111dca9a578d">reset</a> ()</td></tr>
-<tr class="memdesc:a05e74b73d24d578914be111dca9a578d"><td class="mdescLeft">&#160;</td><td class="mdescRight">reset all the publis members reset all the public members. <br/></td></tr>
+<tr class="memdesc:a05e74b73d24d578914be111dca9a578d"><td class="mdescLeft">&#160;</td><td class="mdescRight">reset all the public members reset all the public members. <br/></td></tr>
 <tr class="separator:a05e74b73d24d578914be111dca9a578d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1aa263f14c3322d5aaedc123cd1e2b89"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1aa263f14c3322d5aaedc123cd1e2b89"></a>
 <a class="el" href="classtos__supervoxels__parameters.html">tos_supervoxels_parameters</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtos__supervoxels.html#a1aa263f14c3322d5aaedc123cd1e2b89">get_default_parameters</a> ()</td></tr>
 <tr class="memdesc:a1aa263f14c3322d5aaedc123cd1e2b89"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the default parameters of the algorithm <br/></td></tr>
 <tr class="separator:a1aa263f14c3322d5aaedc123cd1e2b89"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa98f5fdb5a742faf47660fec6d65ca7f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa98f5fdb5a742faf47660fec6d65ca7f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtos__supervoxels.html#aa98f5fdb5a742faf47660fec6d65ca7f">segment</a> ()</td></tr>
-<tr class="memdesc:aa98f5fdb5a742faf47660fec6d65ca7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detect and segment the objects on the table. <br/></td></tr>
-<tr class="separator:aa98f5fdb5a742faf47660fec6d65ca7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6543bae4355bbd4120851067e876e8ef"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtos__supervoxels.html#a6543bae4355bbd4120851067e876e8ef">segment</a> ()</td></tr>
+<tr class="memdesc:a6543bae4355bbd4120851067e876e8ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detect and segment the objects on the table.  <a href="#a6543bae4355bbd4120851067e876e8ef">More...</a><br/></td></tr>
+<tr class="separator:a6543bae4355bbd4120851067e876e8ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75ad67635520b43e2c1ee2f8d3ca7fea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtos__supervoxels.html#a75ad67635520b43e2c1ee2f8d3ca7fea">show_super_voxels</a> (boost::shared_ptr&lt; pcl::visualization::PCLVisualizer &gt; &amp;viewer, bool show_adjacency_map, bool show_super_voxel_normals)</td></tr>
 <tr class="memdesc:a75ad67635520b43e2c1ee2f8d3ca7fea"><td class="mdescLeft">&#160;</td><td class="mdescRight">shows in the viewer the supervoxels  <a href="#a75ad67635520b43e2c1ee2f8d3ca7fea">More...</a><br/></td></tr>
 <tr class="separator:a75ad67635520b43e2c1ee2f8d3ca7fea"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -215,6 +214,9 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>get_zmax</b> ()</td
 <tr class="memitem:a5bde472d451dc101ade456f25869056c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5bde472d451dc101ade456f25869056c"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>get_th_points</b> ()</td></tr>
 <tr class="separator:a5bde472d451dc101ade456f25869056c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad009cc8ba2257a5900c68512c177c00a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad009cc8ba2257a5900c68512c177c00a"></a>
+pcl::ModelCoefficients&#160;</td><td class="memItemRight" valign="bottom"><b>get_plane_coefficients</b> ()</td></tr>
+<tr class="separator:ad009cc8ba2257a5900c68512c177c00a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -262,6 +264,8 @@ pcl::Supervoxel<br class="typebreak"/>
 pcl::PointCloud<br class="typebreak"/>
 &lt; pcl::PointNormal &gt;::Ptr&#160;</td><td class="memItemRight" valign="bottom"><b>sv_normal_cloud</b></td></tr>
 <tr class="separator:a3c8c8e2d8b7405410a7d5d47f517f302"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae54647f05bc9cbb541b95d23d32cab6b"><td class="memItemLeft" align="right" valign="top">pcl::ModelCoefficients&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtos__supervoxels.html#ae54647f05bc9cbb541b95d23d32cab6b">plane_coefficients</a></td></tr>
+<tr class="separator:ae54647f05bc9cbb541b95d23d32cab6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0662491cb89776e0f8ff76753bb24840"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtos__supervoxels.html#a0662491cb89776e0f8ff76753bb24840">disable_transform</a></td></tr>
 <tr class="separator:a0662491cb89776e0f8ff76753bb24840"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a976704822ba4713a07bf66a09029ae90"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtos__supervoxels.html#a976704822ba4713a07bf66a09029ae90">voxel_resolution</a></td></tr>
@@ -332,12 +336,12 @@ Static Protected Attributes</h2></td></tr>
 <p>How to use: </p>
 <div class="fragment"><div class="line"><a class="code" href="classtos__supervoxels.html">tos_supervoxels</a> seg;</div>
 <div class="line">seg(cloud); <span class="comment">//not pointer</span></div>
-<div class="line">seg.<a class="code" href="classtos__supervoxels.html#aa98f5fdb5a742faf47660fec6d65ca7f">segment</a>();</div>
+<div class="line">seg.<a class="code" href="classtos__supervoxels.html#a6543bae4355bbd4120851067e876e8ef">segment</a>();</div>
 <div class="line">std::vector&lt;Object&gt; objects = seg.<a class="code" href="classtos__supervoxels.html#ad7edd076f4eef1619be4395fd01bf660">get_segmented_objects</a>(); </div>
 </div><!-- fragment --><p> or: </p>
 <div class="fragment"><div class="line">std::vector&lt;pcl::PointCloud&lt;pcl::PointXYZRGBA&gt; &gt; objects = seg.<a class="code" href="classtos__supervoxels.html#ab190977726c84292dad40f4337ec6ba9">get_segmented_objects_simple</a>();  </div>
 </div><!-- fragment --> 
-<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00126">126</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
+<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00123">123</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="aedda6ac8b4ed4d73db916e5faf6085e7"></a>
 <div class="memitem">
@@ -392,9 +396,9 @@ Static Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="tos__supervoxels_8cpp_source.html#l00121">121</a> of file <a class="el" href="tos__supervoxels_8cpp_source.html">tos_supervoxels.cpp</a>.</p>
+<p>Definition at line <a class="el" href="tos__supervoxels_8cpp_source.html#l00124">124</a> of file <a class="el" href="tos__supervoxels_8cpp_source.html">tos_supervoxels.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00353">show_super_voxels()</a>.</p>
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00366">show_super_voxels()</a>.</p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -465,16 +469,18 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="tos__supervoxels_8cpp_source.html#l00150">150</a> of file <a class="el" href="tos__supervoxels_8cpp_source.html">tos_supervoxels.cpp</a>.</p>
+<p>Definition at line <a class="el" href="tos__supervoxels_8cpp_source.html#l00153">153</a> of file <a class="el" href="tos__supervoxels_8cpp_source.html">tos_supervoxels.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00240">segment()</a>.</p>
+<p>References <a class="el" href="tos__supervoxels_8h_source.html#l00157">plane_coefficients</a>.</p>
+
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00242">segment()</a>.</p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classtos__supervoxels_a7eb9f9d72fe72e24078496f0d8bfcc1a_icgraph.png" border="0" usemap="#classtos__supervoxels_a7eb9f9d72fe72e24078496f0d8bfcc1a_icgraph" alt=""/></div>
 <map name="classtos__supervoxels_a7eb9f9d72fe72e24078496f0d8bfcc1a_icgraph" id="classtos__supervoxels_a7eb9f9d72fe72e24078496f0d8bfcc1a_icgraph">
-<area shape="rect" id="node2" href="classtos__supervoxels.html#aa98f5fdb5a742faf47660fec6d65ca7f" title="Detect and segment the objects on the table. " alt="" coords="262,12,437,39"/></map>
+<area shape="rect" id="node2" href="classtos__supervoxels.html#a6543bae4355bbd4120851067e876e8ef" title="Detect and segment the objects on the table. " alt="" coords="262,12,437,39"/></map>
 </div>
 </p>
 
@@ -513,7 +519,7 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="tos__supervoxels_8cpp_source.html#l00041">41</a> of file <a class="el" href="tos__supervoxels_8cpp_source.html">tos_supervoxels.cpp</a>.</p>
 
-<p>References <a class="el" href="tos__supervoxels_8h_source.html#l00201">initialized</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00070">set_parameters()</a>.</p>
+<p>References <a class="el" href="tos__supervoxels_8h_source.html#l00201">initialized</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00073">set_parameters()</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -546,9 +552,9 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="tos__supervoxels_8cpp_source.html#l00050">50</a> of file <a class="el" href="tos__supervoxels_8cpp_source.html">tos_supervoxels.cpp</a>.</p>
+<p>Definition at line <a class="el" href="tos__supervoxels_8cpp_source.html#l00053">53</a> of file <a class="el" href="tos__supervoxels_8cpp_source.html">tos_supervoxels.cpp</a>.</p>
 
-<p>References <a class="el" href="tos__supervoxels_8h_source.html#l00201">initialized</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00094">set_default_parameters()</a>.</p>
+<p>References <a class="el" href="tos__supervoxels_8h_source.html#l00201">initialized</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00097">set_default_parameters()</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -556,6 +562,35 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="classtos__supervoxels_a4963a76d8759c326b3639967b23ff984_cgraph.png" border="0" usemap="#classtos__supervoxels_a4963a76d8759c326b3639967b23ff984_cgraph" alt=""/></div>
 <map name="classtos__supervoxels_a4963a76d8759c326b3639967b23ff984_cgraph" id="classtos__supervoxels_a4963a76d8759c326b3639967b23ff984_cgraph">
 <area shape="rect" id="node2" href="classtos__supervoxels.html#acc734faa611ebe574cb2aeb8222585c4" title="Set default parameters to the algorithm. " alt="" coords="198,5,341,46"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a6543bae4355bbd4120851067e876e8ef"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool tos_supervoxels::segment </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>It returns true if there is at least one object on the table, at least one segmented object. </p>
+
+<p>Definition at line <a class="el" href="tos__supervoxels_8cpp_source.html#l00242">242</a> of file <a class="el" href="tos__supervoxels_8cpp_source.html">tos_supervoxels.cpp</a>.</p>
+
+<p>References <a class="el" href="tos__supervoxels_8h_source.html#l00184">color_importance</a>, <a class="el" href="tos__supervoxels_8h_source.html#l00189">concavity_tolerance_threshold</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00153">detectObjectsOnTable()</a>, <a class="el" href="tos__supervoxels_8h_source.html#l00201">initialized</a>, <a class="el" href="tos__supervoxels_8h_source.html#l00191">min_segment_size</a>, <a class="el" href="tos__supervoxels_8h_source.html#l00186">normal_importance</a>, <a class="el" href="tos__supervoxels_8h_source.html#l00183">seed_resolution</a>, <a class="el" href="tos__supervoxels_8h_source.html#l00190">smoothness_threshold</a>, <a class="el" href="tos__supervoxels_8h_source.html#l00185">spatial_importance</a>, <a class="el" href="tos__supervoxels_8h_source.html#l00198">th_points</a>, <a class="el" href="tos__supervoxels_8h_source.html#l00192">use_extended_convexity</a>, <a class="el" href="tos__supervoxels_8h_source.html#l00193">use_sanity_criterion</a>, <a class="el" href="tos__supervoxels_8h_source.html#l00182">voxel_resolution</a>, <a class="el" href="tos__supervoxels_8h_source.html#l00197">zmax</a>, and <a class="el" href="tos__supervoxels_8h_source.html#l00196">zmin</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classtos__supervoxels_a6543bae4355bbd4120851067e876e8ef_cgraph.png" border="0" usemap="#classtos__supervoxels_a6543bae4355bbd4120851067e876e8ef_cgraph" alt=""/></div>
+<map name="classtos__supervoxels_a6543bae4355bbd4120851067e876e8ef_cgraph" id="classtos__supervoxels_a6543bae4355bbd4120851067e876e8ef_cgraph">
+<area shape="rect" id="node2" href="classtos__supervoxels.html#a7eb9f9d72fe72e24078496f0d8bfcc1a" title="detects objects that stands on a table " alt="" coords="230,5,437,46"/></map>
 </div>
 </p>
 
@@ -599,9 +634,9 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="tos__supervoxels_8cpp_source.html#l00353">353</a> of file <a class="el" href="tos__supervoxels_8cpp_source.html">tos_supervoxels.cpp</a>.</p>
+<p>Definition at line <a class="el" href="tos__supervoxels_8cpp_source.html#l00366">366</a> of file <a class="el" href="tos__supervoxels_8cpp_source.html">tos_supervoxels.cpp</a>.</p>
 
-<p>References <a class="el" href="tos__supervoxels_8cpp_source.html#l00121">addSupervoxelConnectionsToViewer()</a>.</p>
+<p>References <a class="el" href="tos__supervoxels_8cpp_source.html#l00124">addSupervoxelConnectionsToViewer()</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -634,9 +669,9 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="tos__supervoxels_8cpp_source.html#l00399">399</a> of file <a class="el" href="tos__supervoxels_8cpp_source.html">tos_supervoxels.cpp</a>.</p>
+<p>Definition at line <a class="el" href="tos__supervoxels_8cpp_source.html#l00412">412</a> of file <a class="el" href="tos__supervoxels_8cpp_source.html">tos_supervoxels.cpp</a>.</p>
 
-<p>References <a class="el" href="tos__supervoxels_8cpp_source.html#l00121">addSupervoxelConnectionsToViewer()</a>.</p>
+<p>References <a class="el" href="tos__supervoxels_8cpp_source.html#l00124">addSupervoxelConnectionsToViewer()</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -669,7 +704,7 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="tos__supervoxels_8cpp_source.html#l00436">436</a> of file <a class="el" href="tos__supervoxels_8cpp_source.html">tos_supervoxels.cpp</a>.</p>
+<p>Definition at line <a class="el" href="tos__supervoxels_8cpp_source.html#l00449">449</a> of file <a class="el" href="tos__supervoxels_8cpp_source.html">tos_supervoxels.cpp</a>.</p>
 
 </div>
 </div>
@@ -693,7 +728,7 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="tos__supervoxels_8cpp_source.html#l00462">462</a> of file <a class="el" href="tos__supervoxels_8cpp_source.html">tos_supervoxels.cpp</a>.</p>
+<p>Definition at line <a class="el" href="tos__supervoxels_8cpp_source.html#l00475">475</a> of file <a class="el" href="tos__supervoxels_8cpp_source.html">tos_supervoxels.cpp</a>.</p>
 
 </div>
 </div>
@@ -717,9 +752,9 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 <p>default value of disable_transform for supervoxel algorithm </p>
 
-<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00132">132</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
+<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00129">129</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00212">get_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00094">set_default_parameters()</a>.</p>
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00214">get_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00097">set_default_parameters()</a>.</p>
 
 </div>
 </div>
@@ -742,9 +777,9 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 <p>default value of voxel_resolution for supervoxel algorithm </p>
 
-<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00133">133</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
+<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00130">130</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00212">get_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00094">set_default_parameters()</a>.</p>
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00214">get_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00097">set_default_parameters()</a>.</p>
 
 </div>
 </div>
@@ -767,9 +802,9 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 <p>default value of seed_resolution for supervoxel algorithm </p>
 
-<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00134">134</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
+<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00131">131</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00212">get_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00094">set_default_parameters()</a>.</p>
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00214">get_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00097">set_default_parameters()</a>.</p>
 
 </div>
 </div>
@@ -792,9 +827,9 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 <p>default value of color_importance for supervoxel algorithm </p>
 
-<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00135">135</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
+<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00132">132</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00212">get_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00094">set_default_parameters()</a>.</p>
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00214">get_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00097">set_default_parameters()</a>.</p>
 
 </div>
 </div>
@@ -817,9 +852,9 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 <p>default value of spatial_importance for supervoxel algorithm </p>
 
-<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00136">136</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
+<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00133">133</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00212">get_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00094">set_default_parameters()</a>.</p>
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00214">get_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00097">set_default_parameters()</a>.</p>
 
 </div>
 </div>
@@ -842,9 +877,9 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 <p>default value of normal_importance for supervoxel algorithm </p>
 
-<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00137">137</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
+<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00134">134</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00212">get_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00094">set_default_parameters()</a>.</p>
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00214">get_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00097">set_default_parameters()</a>.</p>
 
 </div>
 </div>
@@ -867,9 +902,9 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 <p>default value of concavity_tolerance_threshold for lccp algorithm </p>
 
-<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00140">140</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
+<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00137">137</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00212">get_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00094">set_default_parameters()</a>.</p>
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00214">get_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00097">set_default_parameters()</a>.</p>
 
 </div>
 </div>
@@ -892,9 +927,9 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 <p>default value of smoothness_threshold for lccp algorithm </p>
 
-<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00141">141</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
+<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00138">138</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00212">get_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00094">set_default_parameters()</a>.</p>
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00214">get_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00097">set_default_parameters()</a>.</p>
 
 </div>
 </div>
@@ -917,9 +952,9 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 <p>default value of min_segment_size for lccp algorithm </p>
 
-<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00142">142</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
+<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00139">139</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00212">get_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00094">set_default_parameters()</a>.</p>
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00214">get_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00097">set_default_parameters()</a>.</p>
 
 </div>
 </div>
@@ -942,9 +977,9 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 <p>default value of use_extended_convexity for lccp algorithm </p>
 
-<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00143">143</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
+<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00140">140</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00212">get_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00094">set_default_parameters()</a>.</p>
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00214">get_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00097">set_default_parameters()</a>.</p>
 
 </div>
 </div>
@@ -967,9 +1002,9 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 <p>default value of use_sanity_criterion for lccp algorithm </p>
 
-<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00144">144</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
+<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00141">141</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00212">get_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00094">set_default_parameters()</a>.</p>
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00214">get_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00097">set_default_parameters()</a>.</p>
 
 </div>
 </div>
@@ -992,9 +1027,9 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 <p>Default value of the minimum distance for object detection on the table - used inside detectedObjectsTable() </p>
 
-<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00147">147</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
+<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00144">144</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00212">get_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00094">set_default_parameters()</a>.</p>
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00214">get_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00097">set_default_parameters()</a>.</p>
 
 </div>
 </div>
@@ -1017,9 +1052,9 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 <p>Default value of the maxmimum distance for object detection on the table - used inside detectedObjectsTable() </p>
 
-<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00148">148</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
+<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00145">145</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00212">get_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00094">set_default_parameters()</a>.</p>
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00214">get_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00097">set_default_parameters()</a>.</p>
 
 </div>
 </div>
@@ -1042,9 +1077,34 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 <p>Default value of the threshold of minimum points required to consider a cluster as valid </p>
 
-<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00149">149</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
+<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00146">146</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00212">get_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00094">set_default_parameters()</a>.</p>
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00214">get_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00097">set_default_parameters()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae54647f05bc9cbb541b95d23d32cab6b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">pcl::ModelCoefficients tos_supervoxels::plane_coefficients</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>coefficients of the table plane </p>
+
+<p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00157">157</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
+
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00153">detectObjectsOnTable()</a>.</p>
 
 </div>
 </div>
@@ -1069,7 +1129,7 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00181">181</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00498">print_parameters()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00094">set_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00070">set_parameters()</a>.</p>
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00511">print_parameters()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00097">set_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00073">set_parameters()</a>.</p>
 
 </div>
 </div>
@@ -1094,7 +1154,7 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00182">182</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00498">print_parameters()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00240">segment()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00094">set_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00070">set_parameters()</a>.</p>
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00511">print_parameters()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00242">segment()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00097">set_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00073">set_parameters()</a>.</p>
 
 </div>
 </div>
@@ -1119,7 +1179,7 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00183">183</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00498">print_parameters()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00240">segment()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00094">set_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00070">set_parameters()</a>.</p>
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00511">print_parameters()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00242">segment()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00097">set_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00073">set_parameters()</a>.</p>
 
 </div>
 </div>
@@ -1144,7 +1204,7 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00184">184</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00498">print_parameters()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00240">segment()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00094">set_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00070">set_parameters()</a>.</p>
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00511">print_parameters()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00242">segment()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00097">set_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00073">set_parameters()</a>.</p>
 
 </div>
 </div>
@@ -1169,7 +1229,7 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00185">185</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00498">print_parameters()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00240">segment()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00094">set_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00070">set_parameters()</a>.</p>
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00511">print_parameters()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00242">segment()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00097">set_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00073">set_parameters()</a>.</p>
 
 </div>
 </div>
@@ -1194,7 +1254,7 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00186">186</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00498">print_parameters()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00240">segment()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00094">set_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00070">set_parameters()</a>.</p>
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00511">print_parameters()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00242">segment()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00097">set_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00073">set_parameters()</a>.</p>
 
 </div>
 </div>
@@ -1219,7 +1279,7 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00189">189</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00498">print_parameters()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00240">segment()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00094">set_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00070">set_parameters()</a>.</p>
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00511">print_parameters()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00242">segment()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00097">set_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00073">set_parameters()</a>.</p>
 
 </div>
 </div>
@@ -1244,7 +1304,7 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00190">190</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00498">print_parameters()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00240">segment()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00094">set_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00070">set_parameters()</a>.</p>
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00511">print_parameters()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00242">segment()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00097">set_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00073">set_parameters()</a>.</p>
 
 </div>
 </div>
@@ -1269,7 +1329,7 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00191">191</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00498">print_parameters()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00240">segment()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00094">set_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00070">set_parameters()</a>.</p>
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00511">print_parameters()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00242">segment()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00097">set_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00073">set_parameters()</a>.</p>
 
 </div>
 </div>
@@ -1294,7 +1354,7 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00192">192</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00498">print_parameters()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00240">segment()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00094">set_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00070">set_parameters()</a>.</p>
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00511">print_parameters()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00242">segment()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00097">set_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00073">set_parameters()</a>.</p>
 
 </div>
 </div>
@@ -1319,7 +1379,7 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00193">193</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00498">print_parameters()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00240">segment()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00094">set_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00070">set_parameters()</a>.</p>
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00511">print_parameters()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00242">segment()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00097">set_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00073">set_parameters()</a>.</p>
 
 </div>
 </div>
@@ -1344,7 +1404,7 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00196">196</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00498">print_parameters()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00240">segment()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00094">set_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00070">set_parameters()</a>.</p>
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00511">print_parameters()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00242">segment()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00097">set_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00073">set_parameters()</a>.</p>
 
 </div>
 </div>
@@ -1369,7 +1429,7 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00197">197</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00498">print_parameters()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00240">segment()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00094">set_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00070">set_parameters()</a>.</p>
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00511">print_parameters()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00242">segment()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00097">set_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00073">set_parameters()</a>.</p>
 
 </div>
 </div>
@@ -1394,7 +1454,7 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00198">198</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00498">print_parameters()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00240">segment()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00094">set_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00070">set_parameters()</a>.</p>
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00511">print_parameters()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00242">segment()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00097">set_default_parameters()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00073">set_parameters()</a>.</p>
 
 </div>
 </div>
@@ -1419,18 +1479,18 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="tos__supervoxels_8h_source.html#l00201">201</a> of file <a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a>.</p>
 
-<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00041">init()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00240">segment()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00031">tos_supervoxels()</a>.</p>
+<p>Referenced by <a class="el" href="tos__supervoxels_8cpp_source.html#l00041">init()</a>, <a class="el" href="tos__supervoxels_8cpp_source.html#l00242">segment()</a>, and <a class="el" href="tos__supervoxels_8cpp_source.html#l00031">tos_supervoxels()</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/nicola/iri_ws/labrobotica/algorithms/tos_supervoxels/trunk/src/<a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a></li>
-<li>/home/nicola/iri_ws/labrobotica/algorithms/tos_supervoxels/trunk/src/<a class="el" href="tos__supervoxels_8cpp_source.html">tos_supervoxels.cpp</a></li>
+<li>/home/ncovallero/iri-lab/labrobotica/algorithms/tos_supervoxels/trunk/src/<a class="el" href="tos__supervoxels_8h_source.html">tos_supervoxels.h</a></li>
+<li>/home/ncovallero/iri-lab/labrobotica/algorithms/tos_supervoxels/trunk/src/<a class="el" href="tos__supervoxels_8cpp_source.html">tos_supervoxels.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Mar 8 2016 11:18:51 for tos_supervoxels by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 29 2016 11:05:18 for tos_supervoxels by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
