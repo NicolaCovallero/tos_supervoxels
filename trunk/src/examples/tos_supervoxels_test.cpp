@@ -122,18 +122,22 @@ main (int argc, char ** argv)
   viewer->setBackgroundColor (0, 0, 0);
   viewer->registerKeyboardCallback (keyboardEventOccurred, (void*)&viewer);  
   
+  seg.show_table_plane(viewer); // we add the table plane  
+  std::cout << "Press 'n' to show the segmented objects\n";
+  while (!viewer->wasStopped () && !pressed) // the pressed variable is just usfull only for this first while (bad programming)
+      viewer->spinOnce (100);
+
   // show super voxels with normals and adiacency map 
   bool show_adjacency_map = true;
   bool show_super_voxel_normals = false;
   seg.show_super_voxels(viewer,show_adjacency_map,show_super_voxel_normals);  
   
-  std::cout << "Press 'n' to show the segmented objects\n";
   while (!viewer->wasStopped () && !pressed) // the pressed variable is just usfull only for this first while (bad programming)
       viewer->spinOnce (100);
   seg.clean_viewer(viewer);
 
   // show the segmented objects, the result of the segmentation
-  std::cout << "\nClose the visualizer to go to the next step\n";
+  std::cout << "\nClose the visualizer to go to the next step: retrieving the objects point in the RGB image\n";
   seg.show_segmented_objects(viewer);
   while (!viewer->wasStopped ()) // the pressed variable is just usfull only for this first while (bad programming)
       viewer->spinOnce (100);

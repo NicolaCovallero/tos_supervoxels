@@ -166,6 +166,7 @@ void tos_supervoxels::detectObjectsOnTable(pcl::PointCloud<pcl::PointXYZRGBA>::P
   pcl::PointIndices::Ptr planeIndices(new pcl::PointIndices);
   segmentation.segment(*planeIndices, this->plane_coefficients);
 
+
   if (planeIndices->indices.size() == 0)
     std::cout << "Could not find a plane in the scene." << std::endl;
   else
@@ -174,11 +175,13 @@ void tos_supervoxels::detectObjectsOnTable(pcl::PointCloud<pcl::PointXYZRGBA>::P
     pcl::ExtractIndices<pcl::PointXYZRGBA> extract;
     extract.setInputCloud(cloud);
     extract.setIndices(planeIndices);
+    //extract.filter(*(this->table_plane_cloud));
     extract.filter(*plane);
  
     // Retrieve the convex hull.
     pcl::ConvexHull<pcl::PointXYZRGBA> hull;
     hull.setInputCloud(plane);
+    //hull.setInputCloud(this->table_plane_cloud);
     // Make sure that the resulting hull is bidimensional.
     hull.setDimension(2); //2dimension -> planar convex hull
     hull.reconstruct(*convexHull);
@@ -207,6 +210,8 @@ void tos_supervoxels::detectObjectsOnTable(pcl::PointCloud<pcl::PointXYZRGBA>::P
 
     }
     else std::cout << "The chosen hull is not planar." << std::endl;
+
+    this->table_plane_cloud = plane;
   }
 }
 
@@ -472,12 +477,18 @@ void tos_supervoxels::show_segmented_objects(boost::shared_ptr<pcl::visualizatio
   return;
 }
 
+void tos_supervoxels::show_table_plane(boost::shared_ptr<pcl::visualization::PCLVisualizer> & viewer)
+{
+  pcl::visualization::PointCloudColorHandlerRGBField<pcl::PointXYZRGBA> rgb(this->table_plane_cloud);
+  viewer->addPointCloud<pcl::PointXYZRGBA> (this->table_plane_cloud, rgb, "table_plane_cloud");
+}
+
 void tos_supervoxels::clean_viewer(boost::shared_ptr<pcl::visualization::PCLVisualizer> & viewer)
 {
   viewer->removePointCloud("supervoxel_cloud");
   viewer->removePointCloud("supervoxel_normals");
   viewer->removePointCloud("segmented_object_cloud");
-
+  viewer->removePointCloud("table_plane_cloud");
 
   std::multimap<uint32_t,uint32_t>::iterator label_itr = (this->supervoxel_adjacency).begin ();
   for ( ; label_itr != (this->supervoxel_adjacency).end(); )
@@ -535,7 +546,10 @@ pcl::PointCloud<pcl::PointXYZRGBA>::Ptr tos_supervoxels::get_input_cloud()
 {
   return this->cloud;
 }
-
+pcl::PointCloud<pcl::PointXYZRGBA>::Ptr tos_supervoxels::get_plane_cloud()
+{
+  return this->table_plane_cloud;
+}
 pcl::PointCloud<pcl::PointXYZL> tos_supervoxels::get_labeled_voxel_cloud()
 {
   return *(this->labeled_voxel_cloud);

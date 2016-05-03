@@ -148,6 +148,9 @@ class tos_supervoxels
 
     std::vector<Object> detected_objects;
     pcl::PointCloud<pcl::PointXYZRGBA>::Ptr cloud;
+
+    pcl::PointCloud<pcl::PointXYZRGBA>::Ptr table_plane_cloud;
+
     pcl::PointCloud<pcl::PointXYZL>::Ptr lccp_labeled_cloud;
     std::multimap<uint32_t, uint32_t> supervoxel_adjacency;
     pcl::PointCloud<pcl::PointXYZL>::Ptr labeled_voxel_cloud;
@@ -266,6 +269,12 @@ class tos_supervoxels
     */
   	void show_segmented_objects(boost::shared_ptr<pcl::visualization::PCLVisualizer> & viewer); 
 
+    /*! \brief show the detect table plane
+    *
+    * \param viewer viewer in which shows the objects
+    */
+    void show_table_plane(boost::shared_ptr<pcl::visualization::PCLVisualizer> & viewer); 
+
     /*! \brief clean all the pointclouds or shapes introduced by the class in the viewer
     *
     * \param viewer viewer to clean up
@@ -288,6 +297,10 @@ class tos_supervoxels
     /*! \brief returns input cloud
     */
     pcl::PointCloud<pcl::PointXYZRGBA>::Ptr get_input_cloud();
+
+    /*! \brief returns the table plane point cloud
+    */
+    pcl::PointCloud<pcl::PointXYZRGBA>::Ptr get_plane_cloud();
 
     /*! \brief returns labeld voxel cloud
     */
