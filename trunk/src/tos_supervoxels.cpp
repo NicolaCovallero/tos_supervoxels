@@ -451,7 +451,7 @@ void tos_supervoxels::show_super_voxels(boost::shared_ptr<pcl::visualization::PC
   return;
 }
 
-void tos_supervoxels::show_segmented_objects(boost::shared_ptr<pcl::visualization::PCLVisualizer> & viewer)
+void tos_supervoxels::show_labelled_segmented_objects(boost::shared_ptr<pcl::visualization::PCLVisualizer> & viewer)
 {
   pcl::PointCloud<pcl::PointXYZL> objects_cloud;
 
@@ -477,11 +477,42 @@ void tos_supervoxels::show_segmented_objects(boost::shared_ptr<pcl::visualizatio
   return;
 }
 
+void tos_supervoxels::show_segmented_objects(boost::shared_ptr<pcl::visualization::PCLVisualizer> & viewer)
+{
+  pcl::PointCloud<pcl::PointXYZRGBA> objects_cloud;
+
+  for (int i = 0; i < this->detected_objects.size(); ++i)
+    for (int p = 0; p < this->detected_objects[i].object_cloud.size(); ++p)
+      objects_cloud.points.push_back(this->detected_objects[i].object_cloud.points[p]);
+    
+  pcl::visualization::PointCloudColorHandlerRGBField<pcl::PointXYZRGBA> rgb(objects_cloud.makeShared());
+  viewer->addPointCloud<pcl::PointXYZRGBA> (objects_cloud.makeShared(), rgb, "segmented_object_cloud");
+
+  return;
+}
+
+
 void tos_supervoxels::show_table_plane(boost::shared_ptr<pcl::visualization::PCLVisualizer> & viewer)
 {
   pcl::visualization::PointCloudColorHandlerRGBField<pcl::PointXYZRGBA> rgb(this->table_plane_cloud);
   viewer->addPointCloud<pcl::PointXYZRGBA> (this->table_plane_cloud, rgb, "table_plane_cloud");
 }
+
+void tos_supervoxels::show_table_plane(boost::shared_ptr<pcl::visualization::PCLVisualizer> & viewer, int r, int g,int b)
+{
+  // ugly but fst solution
+  pcl::PointCloud<pcl::PointXYZRGBA> tmp_cloud = *(this->table_plane_cloud);
+  for (int i = 0; i < tmp_cloud.size(); ++i)
+  {
+    tmp_cloud.points[i].r = r;
+    tmp_cloud.points[i].g = g;
+    tmp_cloud.points[i].b = b;
+  }
+
+  pcl::visualization::PointCloudColorHandlerRGBField<pcl::PointXYZRGBA> rgb(tmp_cloud.makeShared());
+  viewer->addPointCloud<pcl::PointXYZRGBA> (tmp_cloud.makeShared(), rgb, "table_plane_cloud"); 
+}
+
 
 void tos_supervoxels::clean_viewer(boost::shared_ptr<pcl::visualization::PCLVisualizer> & viewer)
 {

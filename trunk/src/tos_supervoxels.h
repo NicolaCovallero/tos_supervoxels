@@ -207,9 +207,9 @@ class tos_supervoxels
     */
     void set_default_parameters();
 
-    /*! \brief Set all the parameters of the algorithm accordingly to the one given to input   
-    */
-    void set_parameters(tos_supervoxels_parameters & opt);
+ 
+ 
+ 
 
   public:		
 
@@ -240,6 +240,11 @@ class tos_supervoxels
     */
     void reset();
 
+    /*! \brief Set all the parameters of the algorithm accordingly to the one given to input   
+    *    */
+    void set_parameters(tos_supervoxels_parameters & opt);
+
+
     /*! \brief get the default parameters of the algorithm
     */  
     tos_supervoxels_parameters get_default_parameters(); 
@@ -263,17 +268,32 @@ class tos_supervoxels
     */
     void show_super_voxels(boost::shared_ptr<pcl::visualization::PCLVisualizer> & viewer);
 
-    /*! \brief show the segmented objects
+    /*! \brief show the segmented objects labelled by different colors
     *
     * \param viewer viewer in which shows the objects
     */
-  	void show_segmented_objects(boost::shared_ptr<pcl::visualization::PCLVisualizer> & viewer); 
+  	void show_labelled_segmented_objects(boost::shared_ptr<pcl::visualization::PCLVisualizer> & viewer); 
+
+    /*! \brief show the segmented objects 
+    *
+    * \param viewer viewer in which shows the objects
+    */
+    void show_segmented_objects(boost::shared_ptr<pcl::visualization::PCLVisualizer> & viewer); 
 
     /*! \brief show the detect table plane
     *
     * \param viewer viewer in which shows the objects
     */
     void show_table_plane(boost::shared_ptr<pcl::visualization::PCLVisualizer> & viewer); 
+
+    /*! \brief show the detect table plane with a specified color
+    *
+    * \param viewer viewer in which shows the objects
+    * \param r red channel [0-255]
+    * \param g green channel [0-255]
+    * \param b blue channel [0-255]
+    */
+    void show_table_plane(boost::shared_ptr<pcl::visualization::PCLVisualizer> & viewer, int r, int g,int b); 
 
     /*! \brief clean all the pointclouds or shapes introduced by the class in the viewer
     *
